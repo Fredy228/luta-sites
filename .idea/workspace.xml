@@ -4,7 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f49f6b6e-7b59-4e46-9a60-31c30eb02747" name="Changes" comment="" />
+    <list default="true" id="f49f6b6e-7b59-4e46-9a60-31c30eb02747" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/src/components/reused/container/container.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/src/components/reused/container/container.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/src/components/ui/header/header.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/src/components/ui/header/header.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/src/styles/mixins.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/src/styles/variable.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lutapro/next.config.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/lutapro/next.config.mjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lutapro/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/lutapro/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lutapro/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/lutapro/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lutapro/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/lutapro/src/app/globals.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lutapro/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/lutapro/src/app/layout.tsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,6 +43,7 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;last_opened_file_path&quot;: &quot;/Users/aleksej/Disk-D/Projects/luta-sites&quot;,
@@ -35,6 +52,8 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/Users/aleksej/Disk-D/Projects/luta-sites/lutapro/node_modules/prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.prettier&quot;,
     &quot;ts.external.directory.path&quot;: &quot;/Users/aleksej/Disk-D/Projects/luta-sites/lutapro/node_modules/typescript/lib&quot;
   }
 }</component>
@@ -46,6 +65,11 @@
         <entry key="com.intellij.reactbuddy.storybook" value="false" />
       </map>
     </option>
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lutapro/src" />
+    </key>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -64,6 +88,9 @@
       <updated>1715528277043</updated>
       <workItem from="1715528278170" duration="574000" />
       <workItem from="1715528860779" duration="55000" />
+      <workItem from="1715528922829" duration="2408000" />
+      <workItem from="1715531456278" duration="90000" />
+      <workItem from="1715531549389" duration="1486000" />
     </task>
     <servers />
   </component>
