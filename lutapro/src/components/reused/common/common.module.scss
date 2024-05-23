@@ -1,0 +1,45 @@
+@import "@/styles/variable";
+
+.title {
+  &_big {
+    margin-bottom: 10px;
+    font-size: $text-size-xl;
+    font-weight: 700;
+    text-align: center;
+
+    &.light {
+      color: $color-light;
+    }
+    &.dark {
+      color: $color-text-main;
+    }
+  }
+
+  &_small {
+    color: $color-text-main;
+    margin-bottom: 10px;
+    font-size: 30px;
+  }
+}
+
+.subtitle {
+  &_big {
+    color: $color-text-second;
+    font-size: $text-size-lg;
+    text-align: center;
+    font-weight: 400;
+
+    &.light {
+      color: $color-light;
+    }
+    &.dark {
+      color: $color-text-main;
+    }
+  }
+
+  &_small {
+    color: $color-text-second;
+    font-size: $text-size-lg;
+    font-weight: 400;
+  }
+}

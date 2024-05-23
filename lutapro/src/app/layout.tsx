@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 
 import "@fontsource/lato/300.css";
 import "@fontsource/lato/400.css";
-import "@fontsource/lato/500.css";
 import "@fontsource/lato/700.css";
 import "./globals.scss";
 
 export const metadata: Metadata = {
-  title: "ЛЮТАПРО",
+  title: "Сайт компании ЛЮТАПРО, Одесса",
   description:
     "ЛЮТАПРО оказывает услуги плазменной и лазерной резки, фрезеровки на станках с ЧПУ",
   keywords: [
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     "лютапро",
     "lutapro",
     "luta-pro",
-    " люта-про",
+    "люта-про",
     "дуб",
     "ясень",
     "алюминий",
@@ -34,8 +34,10 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <body>
-        {children}
-        <div id="modal-root"></div>
+        <AppRouterCacheProvider options={{ key: "css" }}>
+          {children}
+          <div id="modal-root"></div>
+        </AppRouterCacheProvider>
       </body>
     </html>
   );

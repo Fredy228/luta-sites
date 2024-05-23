@@ -1,0 +1,15 @@
+@import "@/styles/variable";
+@import "@/styles/mixins";
+
+.gallery {
+  @include section;
+
+  &_inner {
+  }
+
+  &_img {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

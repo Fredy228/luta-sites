@@ -1,0 +1,30 @@
+@import "@/styles/variable";
+
+.intro {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  flex: 1;
+
+  &_title,
+  &_typingText {
+    color: $color-light;
+    font-size: 40px;
+    font-weight: 700;
+  }
+
+  &_title {
+  }
+
+  &_typingText {
+  }
+
+  &_text {
+    color: #03b5f1;
+    font-size: $text-size-lg;
+    margin-bottom: 50px;
+    margin-top: 15px;
+  }
+}

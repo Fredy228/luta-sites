@@ -1,0 +1,16 @@
+.home {
+  &_intro {
+    min-height: 600px;
+    height: 100vh;
+    max-height: 800px;
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    user-select: none;
+    background-color: rgb(85, 85, 85);
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+  }
+}

@@ -5,21 +5,103 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f49f6b6e-7b59-4e46-9a60-31c30eb02747" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lutapro/src/components/reused/container/container.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lutapro/src/components/reused/container/container.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lutapro/src/components/ui/header/header.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lutapro/src/components/ui/header/header.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lutapro/src/styles/mixins.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lutapro/src/styles/variable.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/public/img/gallery/gallery-1.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/public/img/gallery/gallery-10.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/public/img/gallery/gallery-11.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/public/img/gallery/gallery-12.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/public/img/gallery/gallery-2.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/public/img/gallery/gallery-3.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/public/img/gallery/gallery-4.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/public/img/gallery/gallery-5.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/public/img/gallery/gallery-6.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/public/img/gallery/gallery-7.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/public/img/gallery/gallery-8.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/public/img/gallery/gallery-9.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/public/img/gallery/gallery.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/public/img/general/logo-lutapro.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/public/img/intro/intro-bg.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/public/img/nav-portfolio/nav-portf-1.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/public/img/nav-portfolio/nav-portf-2.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/public/img/nav-portfolio/nav-portf-3.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/public/img/nav-portfolio/nav-portf-4.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/public/img/nav-portfolio/nav-portf-5.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/public/img/nav-portfolio/nav-portf-6.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/public/img/our-machines/our-machine-1.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/public/img/our-machines/our-machine-2.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/public/img/our-machines/our-machine-3.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/public/img/our-machines/our-machine-4.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/public/img/our-machines/our-machine-bg.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/public/img/steel-cutting/milling-1.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/public/img/steel-cutting/milling-2.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/public/img/steel-cutting/milling-3.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/public/img/steel-cutting/milling-4.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/public/img/steel-cutting/milling-5.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/public/img/steel-cutting/milling-6.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/public/img/steel-cutting/milling-7.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/public/img/steel-cutting/milling-8.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/public/img/steel-cutting/milling.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/public/img/steel-cutting/steel-cut-1.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/public/img/steel-cutting/steel-cut-2.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/public/img/steel-cutting/steel-cut-3.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/public/img/steel-cutting/steel-cut-4.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/public/img/steel-cutting/steel-cut-5.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/public/img/steel-cutting/steel-cut-6.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/public/img/steel-cutting/steel-cut-7.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/public/img/steel-cutting/steel-cut-8.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/public/img/steel-cutting/steel-cutting.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/src/components/reused/buttons/button-round.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/src/components/reused/buttons/buttons.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/src/components/reused/common/common.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/src/components/reused/common/title-section-big.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/src/components/reused/common/title-section-small.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/src/components/reused/icon/icon.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/src/components/reused/icon/store/cross.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/src/components/reused/icon/store/facebook.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/src/components/reused/icon/store/phone-incoming.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/src/components/reused/icon/store/small-right-arrow.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/src/components/reused/modal-window/ModalWindow.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/src/components/reused/modal-window/modal-window.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/src/components/reused/popap-menu-wrap/PopapMenuWrap.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/src/components/reused/popap-menu-wrap/popap-menu-wrap.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/src/components/ui/header/contacts/contacts.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/src/components/ui/header/contacts/contacts.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/src/components/ui/header/header-dynamic.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/src/components/ui/header/list-nav.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/src/components/ui/slider-gallery/slider-gallery.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/src/components/ui/slider-gallery/slider-gallery.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/src/hooks/scrollScreen.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/src/screens/home/gallary/gallery-list.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/src/screens/home/gallary/gallery.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/src/screens/home/gallary/gallery.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/src/screens/home/home.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/src/screens/home/home.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/src/screens/home/intro/intro.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/src/screens/home/intro/intro.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/src/screens/home/nav-portfolio/list-nav-portfoliio.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/src/screens/home/nav-portfolio/nav-portfolio.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/src/screens/home/nav-portfolio/nav-portfolio.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/src/screens/home/our-machines/list-our-machines.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/src/screens/home/our-machines/our-machines.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/src/screens/home/our-machines/our-machines.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/src/screens/home/send-file-for-calc/send-file-for-calc.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/src/screens/home/send-file-for-calc/send-file-for-calc.tsx.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/src/screens/home/steel-cutting/milling-list.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/src/screens/home/steel-cutting/milling.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/src/screens/home/steel-cutting/steel-cut-list.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/src/screens/home/steel-cutting/steel-cutting.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/src/screens/home/steel-cutting/steel-cutting.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/src/services/no-scroll.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lutapro/next.config.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/lutapro/next.config.mjs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lutapro/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/lutapro/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lutapro/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/lutapro/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lutapro/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/lutapro/src/app/globals.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lutapro/src/app/globals.scss" beforeDir="false" afterPath="$PROJECT_DIR$/lutapro/src/app/globals.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lutapro/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/lutapro/src/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lutapro/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/lutapro/src/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lutapro/src/components/ui/header/header.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/lutapro/src/components/ui/header/header.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lutapro/src/components/ui/header/header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/lutapro/src/components/ui/header/header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lutapro/src/styles/mixins.scss" beforeDir="false" afterPath="$PROJECT_DIR$/lutapro/src/styles/mixins.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lutapro/src/styles/variable.scss" beforeDir="false" afterPath="$PROJECT_DIR$/lutapro/src/styles/variable.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,23 +122,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/aleksej/Disk-D/Projects/luta-sites&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/Users/aleksej/Disk-D/Projects/luta-sites/lutapro/node_modules/prettier&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.prettier&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Users/aleksej/Disk-D/Projects/luta-sites/lutapro/node_modules/typescript/lib&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "/Users/aleksej/Disk-D/Projects/luta-sites/lutapro/src/components/reused/icon/store",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "npm.dev.executor": "Run",
+    "prettierjs.PrettierConfiguration.Package": "/Users/aleksej/Disk-D/Projects/luta-sites/lutapro/node_modules/prettier",
+    "settings.editor.selected.configurable": "settings.javascript.prettier",
+    "ts.external.directory.path": "/Users/aleksej/Disk-D/Projects/luta-sites/lutapro/node_modules/typescript/lib"
   }
-}</component>
+}]]></component>
+  <component name="ReactBuddySettings">
+    <option name="extensionsIgnore" value="true" />
+  </component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -67,9 +153,29 @@
     </option>
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lutapro/src/components/reused/icon/store" />
+      <recent name="$PROJECT_DIR$/lutapro/src/services" />
+      <recent name="$PROJECT_DIR$/lutapro/src/screens/home/steel-cutting" />
+      <recent name="$PROJECT_DIR$/lutapro/hooks" />
+      <recent name="$PROJECT_DIR$/lutapro/public/img/intro" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/lutapro/src" />
+      <recent name="$PROJECT_DIR$/lutapro/src/components/ui/header" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="dev" type="js.build_tools.npm" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/lutapro/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -90,7 +196,10 @@
       <workItem from="1715528860779" duration="55000" />
       <workItem from="1715528922829" duration="2408000" />
       <workItem from="1715531456278" duration="90000" />
-      <workItem from="1715531549389" duration="1486000" />
+      <workItem from="1715531549389" duration="30556000" />
+      <workItem from="1715850794829" duration="605000" />
+      <workItem from="1715853377035" duration="44375000" />
+      <workItem from="1716373023003" duration="20060000" />
     </task>
     <servers />
   </component>
