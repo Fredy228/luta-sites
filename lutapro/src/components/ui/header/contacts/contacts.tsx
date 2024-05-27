@@ -2,14 +2,23 @@
 
 import { type FC, useState } from "react";
 import { AnimatePresence } from "framer-motion";
+import dynamic from "next/dynamic";
 
 import styles from "./contacts.module.scss";
 
 import PopapMenuWrap from "@/components/reused/popap-menu-wrap/PopapMenuWrap";
 import { IconFacebook, IconPhoneIncoming } from "@/components/reused/icon/icon";
+import SendForm from "@/components/ui/send-form/send-form";
+const ModalWindow = dynamic(
+  () => import("@/components/reused/modal-window/ModalWindow"),
+  {
+    ssr: false,
+  },
+);
 
 const ContactsHeader: FC = () => {
   const [isShow, setIsShow] = useState<boolean>(false);
+  const [isShowForm, setIsShowForm] = useState<boolean>(false);
 
   return (
     <div className={styles.contacts}>
@@ -25,7 +34,11 @@ const ContactsHeader: FC = () => {
           info@rezba.com.ua
         </a>
       </div>
-      <button className={styles.contacts_btnPhone} type={"button"}>
+      <button
+        className={styles.contacts_btnPhone}
+        type={"button"}
+        onClick={() => setIsShowForm(true)}
+      >
         <IconPhoneIncoming />
       </button>
 
@@ -78,6 +91,17 @@ const ContactsHeader: FC = () => {
               </li>
             </ul>
           </PopapMenuWrap>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {isShowForm && (
+          <ModalWindow setShow={setIsShowForm} cross={"small"}>
+            <SendForm
+              title={"ОБРАТНЫЙ ЗВОНОК"}
+              text={"Мы свяжемся с вами в ближайшее время"}
+            />
+          </ModalWindow>
         )}
       </AnimatePresence>
     </div>

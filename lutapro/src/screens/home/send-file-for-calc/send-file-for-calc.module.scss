@@ -1,0 +1,9 @@
+@import "@/styles/mixins";
+@import "@/styles/variable";
+
+.sendFile {
+  @include section;
+
+  &_inner {
+  }
+}

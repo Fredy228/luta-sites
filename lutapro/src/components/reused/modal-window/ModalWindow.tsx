@@ -22,6 +22,7 @@ type Props = {
   backdropFilter?: string;
   zIndex?: string;
   scrollPage?: boolean;
+  cross?: "big" | "small";
 } & PropsWithChildren;
 
 const ModalWindow: FC<Props> = ({
@@ -32,6 +33,7 @@ const ModalWindow: FC<Props> = ({
   backdropFilter = "blur(4px)",
   zIndex = "100",
   scrollPage = false,
+  cross = "big",
 }) => {
   const handleBackdropClick = (event: React.MouseEvent<HTMLElement>) => {
     if (event.target === event.currentTarget) {
@@ -74,7 +76,7 @@ const ModalWindow: FC<Props> = ({
     >
       <div className={styles.modal_modal}>
         <button
-          className={styles.modal_btn}
+          className={`${styles.modal_btn} ${cross === "big" ? styles.big : styles.small}`}
           type={"button"}
           onClick={handleCloseBtn}
         >

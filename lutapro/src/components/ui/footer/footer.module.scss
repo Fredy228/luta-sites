@@ -1,0 +1,90 @@
+@import "@/styles/variable";
+@import "@/styles/mixins";
+
+.footer {
+  @include section;
+
+  background: rgb(103, 107, 112);
+  background: -moz-linear-gradient(
+    180deg,
+    rgba(103, 107, 112, 1) 22%,
+    rgba(172, 172, 172, 1) 100%
+  );
+  background: -webkit-linear-gradient(
+    180deg,
+    rgba(103, 107, 112, 1) 22%,
+    rgba(172, 172, 172, 1) 100%
+  );
+  background: linear-gradient(
+    180deg,
+    rgba(103, 107, 112, 1) 22%,
+    rgba(172, 172, 172, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#676b70",endColorstr="#acacac",GradientType=1);
+
+  &_inner {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &_logo {
+    max-width: 450px;
+    margin: 0 auto 15px auto;
+  }
+
+  &_name {
+    font-size: $text-size-sm;
+    color: $color-light;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+  }
+
+  &_list {
+    margin-bottom: 20px;
+    display: flex;
+    padding: 15px 50px;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.2);
+  }
+
+  &_item {
+    padding: 0 30px;
+    color: $color-light;
+    display: flex;
+    align-items: center;
+
+    &:not(:last-child) {
+      border-right: 1px solid rgba(255, 255, 255, 0.3);
+    }
+  }
+
+  &_tel {
+    font-size: 23px;
+    font-weight: 700;
+  }
+
+  &_mail {
+    font-size: $text-size-sm;
+    text-decoration: underline;
+  }
+
+  &_social {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    > svg {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background-color: $color-light;
+    }
+  }
+
+  &_copyright {
+    color: $color-light;
+    font-size: $text-size-sm;
+  }
+}

@@ -13,6 +13,11 @@ import Milling from "@/screens/home/steel-cutting/milling";
 import NavPortfolio from "@/screens/home/nav-portfolio/nav-portfolio";
 import OurMachines from "@/screens/home/our-machines/our-machines";
 import SendFileForCalc from "@/screens/home/send-file-for-calc/send-file-for-calc";
+import PriceList from "@/screens/home/price-list/price-list";
+import CalcOrder from "@/screens/home/calc-orders/calc-order";
+import FAQ from "@/screens/home/faq/faq";
+import Map from "@/components/ui/map/map";
+import Footer from "@/components/ui/footer/footer";
 
 const Home: NextPage = () => {
   return (
@@ -34,6 +39,11 @@ const Home: NextPage = () => {
         <NavPortfolio />
         <OurMachines />
         <SendFileForCalc />
+        <PriceList />
+        <CalcOrder />
+        <FAQ />
+        <Map />
+        <Footer />
       </main>
     </>
   );

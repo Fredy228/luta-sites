@@ -29,22 +29,40 @@
 
   &_btn {
     position: absolute;
-    top: 10px;
-    right: 10px;
     z-index: 150;
 
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    color: $color-light;
 
     display: flex;
     justify-content: center;
     align-items: center;
 
-    svg {
+    &.big {
+      color: $color-light;
+      width: 50px;
+      height: 50px;
+      top: 10px;
+      right: 10px;
+
+      > svg {
+        width: 30px;
+        height: 30px;
+      }
+    }
+
+    &.small {
+      color: $color-second;
       width: 30px;
       height: 30px;
+      top: 5px;
+      right: 5px;
+
+      > svg {
+        width: 15px;
+        height: 15px;
+      }
     }
   }
 }
