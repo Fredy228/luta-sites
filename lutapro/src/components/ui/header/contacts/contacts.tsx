@@ -3,12 +3,14 @@
 import { type FC, useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import dynamic from "next/dynamic";
+import ContactPhoneIcon from "@mui/icons-material/ContactPhone";
 
 import styles from "./contacts.module.scss";
 
 import PopapMenuWrap from "@/components/reused/popap-menu-wrap/PopapMenuWrap";
 import { IconFacebook, IconPhoneIncoming } from "@/components/reused/icon/icon";
 import SendForm from "@/components/ui/send-form/send-form";
+import useWindowDimensions from "@/hooks/useWindowDimensions";
 const ModalWindow = dynamic(
   () => import("@/components/reused/modal-window/ModalWindow"),
   {
@@ -19,6 +21,21 @@ const ModalWindow = dynamic(
 const ContactsHeader: FC = () => {
   const [isShow, setIsShow] = useState<boolean>(false);
   const [isShowForm, setIsShowForm] = useState<boolean>(false);
+  const { width } = useWindowDimensions();
+
+  const isMobile = width < 768;
+
+  const popStyle: Record<string, string> = isMobile
+    ? { top: "0", right: "0" }
+    : { top: "0", left: "0" };
+
+  const handlePhoneBtn = () => {
+    if (isMobile) {
+      setIsShow(true);
+    } else {
+      setIsShowForm(true);
+    }
+  };
 
   return (
     <div className={styles.contacts}>
@@ -37,21 +54,14 @@ const ContactsHeader: FC = () => {
       <button
         className={styles.contacts_btnPhone}
         type={"button"}
-        onClick={() => setIsShowForm(true)}
+        onClick={handlePhoneBtn}
       >
-        <IconPhoneIncoming />
+        {isMobile ? <ContactPhoneIcon /> : <IconPhoneIncoming />}
       </button>
 
       <AnimatePresence>
         {isShow && (
-          <PopapMenuWrap
-            stylePop={{
-              top: "0",
-              left: "0",
-            }}
-            keyItem={1}
-            setShow={setIsShow}
-          >
+          <PopapMenuWrap stylePop={popStyle} keyItem={1} setShow={setIsShow}>
             <ul className={styles.contactsList}>
               <li className={styles.contactsList_item}>
                 <a
@@ -100,6 +110,7 @@ const ContactsHeader: FC = () => {
             <SendForm
               title={"ОБРАТНЫЙ ЗВОНОК"}
               text={"Мы свяжемся с вами в ближайшее время"}
+              tag={"#Обратный звонок"}
             />
           </ModalWindow>
         )}

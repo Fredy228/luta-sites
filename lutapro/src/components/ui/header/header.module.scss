@@ -1,5 +1,41 @@
 @import "@/styles/variable";
 
+.scrollToTop,
+.mobilePhone {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $color-primary;
+  z-index: 40;
+
+  > svg {
+    width: 25px;
+    height: 25px;
+    color: $color-light;
+  }
+}
+
+.scrollToTop {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+}
+
+.mobilePhone {
+  position: fixed;
+  bottom: 15px;
+  left: 15px;
+  display: none;
+
+  @media screen and (max-width: 767px) {
+    display: flex;
+  }
+}
+
 .header {
   margin-bottom: 20px;
 
@@ -16,26 +52,44 @@
     background-color: $bg-v1;
     font-size: $text-size-sm;
     color: $color-light;
+
+    @media screen and (max-width: 767px) {
+      display: none;
+    }
   }
 
   &_logo {
+    display: flex;
+    align-items: center;
   }
 
   &_logoImg {
     width: 210px;
+
+    @media screen and (max-width: 1023px) {
+      width: 150px;
+    }
   }
 }
 
 .headerDynm {
   width: 100%;
-  //min-width: 320px;
+  min-width: 320px;
+
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
 
   &.scroll {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 60;
+    z-index: 45;
     background-color: rgba(77, 77, 74, 0.9);
+
+    @media screen and (max-width: 767px) {
+      display: block;
+    }
   }
 
   &_inner {
@@ -48,6 +102,10 @@
     .headerDynm.scroll & {
       justify-content: flex-end;
       padding: 10px;
+
+      @media screen and (max-width: 767px) {
+        justify-content: space-between;
+      }
     }
   }
 
@@ -69,6 +127,22 @@
 
     &:hover {
       opacity: 1;
+    }
+
+    &.mobile {
+      background-color: $color-primary;
+      border-radius: 50%;
+      opacity: 1;
+      display: none;
+
+      @media screen and (max-width: 767px) {
+        display: flex;
+      }
+    }
+
+    @media screen and (max-width: 767px) {
+      width: 44px;
+      height: 44px;
     }
   }
 
@@ -108,6 +182,10 @@
     .headerDynm.scroll & {
       width: auto;
       margin-right: auto;
+
+      @media screen and (max-width: 767px) {
+        display: none;
+      }
     }
   }
 
@@ -121,11 +199,23 @@
     .headerDynm.scroll & {
       width: auto;
     }
+
+    @media screen and (max-width: 1023px) {
+      gap: 15px;
+    }
   }
 
   &_navItem {
     .headerDynm.scroll &:not(:nth-child(-n + 2)) {
       display: none;
+    }
+
+    @media screen and (max-width: 1023px) {
+      text-align: center;
+
+      .headerDynm.scroll & {
+        display: none;
+      }
     }
   }
 
@@ -138,9 +228,16 @@
     padding: 0 15px;
     align-items: center;
     transition: opacity $anim-duration $anim-func-v1;
+    cursor: pointer;
 
     &:hover {
       opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1023px) {
+      text-align: center;
+      padding: 0 5px;
+      font-size: $text-size-xs;
     }
   }
 }

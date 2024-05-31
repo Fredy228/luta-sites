@@ -13,6 +13,10 @@
     &.dark {
       color: $color-text-main;
     }
+
+    @media screen and (max-width: 1023px) {
+      font-size: 30px;
+    }
   }
 
   &_small {
@@ -34,6 +38,10 @@
     }
     &.dark {
       color: $color-text-main;
+    }
+
+    @media screen and (max-width: 1023px) {
+      font-size: $text-size-md;
     }
   }
 

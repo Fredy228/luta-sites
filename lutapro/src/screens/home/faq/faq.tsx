@@ -31,6 +31,7 @@ const ModalWindow = dynamic(
 
 const FAQ: FC = () => {
   const [isShowModal, setIsShowModal] = useState<boolean>(false);
+
   return (
     <section className={styles.faq}>
       <Container>
@@ -91,6 +92,7 @@ const FAQ: FC = () => {
               text={
                 "Напишите свой вопрос и укажите контактную информацию для скорейшего ответа"
               }
+              tag={"#Задать вопрос"}
               setOptions={{
                 textarea: true,
               }}

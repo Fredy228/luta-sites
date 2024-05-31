@@ -2,6 +2,7 @@
 
 import { type FC, useState } from "react";
 import Image from "next/image";
+import { Element } from "react-scroll";
 
 import styles from "./steel-cutting.module.scss";
 
@@ -32,55 +33,57 @@ const Milling: FC = () => {
   };
 
   return (
-    <section className={styles.steelCut}>
-      <Container>
-        <div className={styles.steelCut_inner}>
-          <div className={styles.steelCut_wrapImg}>
-            <Image
-              className={styles.steelCut_img}
-              src={imageMilling.src}
-              alt={"Milling"}
-              width={512}
-              height={768}
-            />
-          </div>
-          <div className={styles.steelCut_wrapInfo}>
-            <TitleSectionBig text={"Фрезеровка 3D и 4D"} />
-            <SubtitleSectionSmall
-              text={
-                'ЧПУ фрезеровка - современный и надежный способ создания резных изделий от компании "ЛЮТАПРО"'
-              }
-            />
-            <p className={styles.steelCut_text}>
-              Сложные, резные деревянные элементы – это далеко не все, что можно
-              изготовить на станке ЧПУ
-            </p>
+    <Element name={"milling"}>
+      <section className={styles.steelCut}>
+        <Container>
+          <div className={styles.steelCut_inner}>
+            <div className={styles.steelCut_wrapImg}>
+              <Image
+                className={styles.steelCut_img}
+                src={imageMilling.src}
+                alt={"Milling"}
+                width={512}
+                height={768}
+              />
+            </div>
+            <div className={styles.steelCut_wrapInfo}>
+              <TitleSectionBig text={"Фрезеровка 3D и 4D"} />
+              <SubtitleSectionSmall
+                text={
+                  'ЧПУ фрезеровка - современный и надежный способ создания резных изделий от компании "ЛЮТАПРО"'
+                }
+              />
+              <p className={styles.steelCut_text}>
+                Сложные, резные деревянные элементы – это далеко не все, что
+                можно изготовить на станке ЧПУ
+              </p>
 
-            <ul className={styles.steelCut_list}>
-              {MillingList.map((item) => (
-                <li className={styles.steelCut_item} key={item.id}>
-                  <Image
-                    className={styles.steelCut_itemImg}
-                    src={item.img}
-                    alt={"Milling"}
-                    width={500}
-                    height={500}
-                    onClick={() => handleOpenPhoto(item.id)}
-                  />
-                </li>
-              ))}
-            </ul>
+              <ul className={styles.steelCut_list}>
+                {MillingList.map((item) => (
+                  <li className={styles.steelCut_item} key={item.id}>
+                    <Image
+                      className={styles.steelCut_itemImg}
+                      src={item.img}
+                      alt={"Milling"}
+                      width={500}
+                      height={500}
+                      onClick={() => handleOpenPhoto(item.id)}
+                    />
+                  </li>
+                ))}
+              </ul>
 
-            <ButtonRound text={"Смотреть портфолио"} onClick={() => ""} />
+              <ButtonRound text={"Смотреть портфолио"} onClick={() => ""} />
+            </div>
+            {isShowModal && (
+              <ModalWindow setShow={setIsShowModal} scrollPage={true}>
+                <SliderGallery idx_curr={idxCurrPhoto} list={MillingList} />
+              </ModalWindow>
+            )}
           </div>
-          {isShowModal && (
-            <ModalWindow setShow={setIsShowModal} scrollPage={true}>
-              <SliderGallery idx_curr={idxCurrPhoto} list={MillingList} />
-            </ModalWindow>
-          )}
-        </div>
-      </Container>
-    </section>
+        </Container>
+      </section>
+    </Element>
   );
 };
 

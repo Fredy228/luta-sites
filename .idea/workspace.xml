@@ -5,32 +5,39 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f49f6b6e-7b59-4e46-9a60-31c30eb02747" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/lutapro/public/img/calc-orders/calc-orders-bg.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lutapro/public/img/calc-orders/calc-orders.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lutapro/public/img/faq/faq-men.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lutapro/public/img/price-list/price-list-bg.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lutapro/src/components/ui/footer/footer.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lutapro/src/components/ui/footer/footer.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lutapro/src/components/ui/map/map.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lutapro/src/components/ui/map/map.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lutapro/src/components/ui/send-form/send-form.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lutapro/src/components/ui/send-form/send-form.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lutapro/src/screens/home/calc-orders/calc-order-list.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lutapro/src/screens/home/calc-orders/calc-order.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lutapro/src/screens/home/calc-orders/calc-order.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lutapro/src/screens/home/faq/faq.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lutapro/src/screens/home/faq/faq.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lutapro/src/screens/home/faq/list-faq.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lutapro/src/screens/home/price-list/list-price.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lutapro/src/screens/home/price-list/price-list.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lutapro/src/screens/home/price-list/price-list.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/src/components/ui/header/burger-menu/burger-menu.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/src/components/ui/header/burger-menu/burger-menu.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lutapro/src/hooks/useWindowDimensions.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lutapro/src/components/reused/modal-window/ModalWindow.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/lutapro/src/components/reused/modal-window/ModalWindow.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lutapro/src/components/reused/modal-window/modal-window.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/lutapro/src/components/reused/modal-window/modal-window.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lutapro/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/lutapro/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lutapro/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/lutapro/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lutapro/src/app/globals.scss" beforeDir="false" afterPath="$PROJECT_DIR$/lutapro/src/app/globals.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lutapro/src/components/reused/common/common.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/lutapro/src/components/reused/common/common.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lutapro/src/components/ui/footer/footer.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/lutapro/src/components/ui/footer/footer.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lutapro/src/components/ui/header/contacts/contacts.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/lutapro/src/components/ui/header/contacts/contacts.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lutapro/src/components/ui/header/contacts/contacts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/lutapro/src/components/ui/header/contacts/contacts.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lutapro/src/screens/home/home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/lutapro/src/screens/home/home.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lutapro/src/components/ui/header/header-dynamic.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/lutapro/src/components/ui/header/header-dynamic.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lutapro/src/components/ui/header/header.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/lutapro/src/components/ui/header/header.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lutapro/src/components/ui/header/header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/lutapro/src/components/ui/header/header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lutapro/src/components/ui/send-form/send-form.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/lutapro/src/components/ui/send-form/send-form.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lutapro/src/components/ui/send-form/send-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/lutapro/src/components/ui/send-form/send-form.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lutapro/src/screens/home/calc-orders/calc-order.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/lutapro/src/screens/home/calc-orders/calc-order.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lutapro/src/screens/home/calc-orders/calc-order.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/lutapro/src/screens/home/calc-orders/calc-order.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lutapro/src/screens/home/faq/faq.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/lutapro/src/screens/home/faq/faq.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lutapro/src/screens/home/faq/faq.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/lutapro/src/screens/home/faq/faq.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lutapro/src/screens/home/gallary/gallery.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/lutapro/src/screens/home/gallary/gallery.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lutapro/src/screens/home/intro/intro.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/lutapro/src/screens/home/intro/intro.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lutapro/src/screens/home/intro/intro.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/lutapro/src/screens/home/intro/intro.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lutapro/src/screens/home/nav-portfolio/nav-portfolio.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/lutapro/src/screens/home/nav-portfolio/nav-portfolio.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lutapro/src/screens/home/nav-portfolio/nav-portfolio.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/lutapro/src/screens/home/nav-portfolio/nav-portfolio.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lutapro/src/screens/home/our-machines/our-machines.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/lutapro/src/screens/home/our-machines/our-machines.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lutapro/src/screens/home/our-machines/our-machines.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/lutapro/src/screens/home/our-machines/our-machines.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lutapro/src/screens/home/price-list/price-list.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/lutapro/src/screens/home/price-list/price-list.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lutapro/src/screens/home/price-list/price-list.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/lutapro/src/screens/home/price-list/price-list.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lutapro/src/screens/home/send-file-for-calc/send-file-for-calc.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/lutapro/src/screens/home/send-file-for-calc/send-file-for-calc.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lutapro/src/screens/home/send-file-for-calc/send-file-for-calc.tsx.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/lutapro/src/screens/home/send-file-for-calc/send-file-for-calc.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lutapro/src/screens/home/steel-cutting/milling.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/lutapro/src/screens/home/steel-cutting/milling.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lutapro/src/screens/home/steel-cutting/steel-cutting.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/lutapro/src/screens/home/steel-cutting/steel-cutting.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lutapro/src/screens/home/steel-cutting/steel-cutting.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/lutapro/src/screens/home/steel-cutting/steel-cutting.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,7 +135,10 @@
       <workItem from="1715531549389" duration="30556000" />
       <workItem from="1715850794829" duration="605000" />
       <workItem from="1715853377035" duration="44375000" />
-      <workItem from="1716373023003" duration="60856000" />
+      <workItem from="1716373023003" duration="60939000" />
+      <workItem from="1716825085865" duration="5541000" />
+      <workItem from="1716923646260" duration="26000" />
+      <workItem from="1716923691000" duration="24670000" />
     </task>
     <servers />
   </component>

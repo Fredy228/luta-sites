@@ -11,11 +11,19 @@
     flex-direction: column;
     align-items: flex-end;
     color: $color-light;
+
+    @media screen and (max-width: 767px) {
+      display: none;
+    }
   }
 
   &_btn {
     font-size: 23px;
     font-weight: 700;
+
+    @media screen and (max-width: 1023px) {
+      font-size: $text-size-lg;
+    }
   }
 
   &_email {
@@ -66,6 +74,10 @@
     font-size: 22px;
     color: $color-dark;
     font-weight: 700;
+
+    @media screen and (max-width: 767px) {
+      font-size: $text-size-lg;
+    }
   }
 
   &_text {

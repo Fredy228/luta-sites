@@ -55,6 +55,7 @@ type Props = {
   };
   title: string;
   text: string;
+  tag: string;
 };
 const SendForm: FC<Props> = ({ setOptions, title, text }) => {
   const [file, setFile] = useState<null | File>(null);

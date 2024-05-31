@@ -27,6 +27,7 @@ const SendFileForCalc: FC = () => {
             setOptions={{
               file: true,
             }}
+            tag={"#Файл на просчет"}
           />
         </div>
       </Container>

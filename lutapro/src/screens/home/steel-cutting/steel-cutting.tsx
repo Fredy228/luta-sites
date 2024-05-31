@@ -3,6 +3,7 @@
 import { type FC, useState } from "react";
 import Image from "next/image";
 import dynamic from "next/dynamic";
+import { Element } from "react-scroll";
 
 import styles from "./steel-cutting.module.scss";
 
@@ -32,57 +33,62 @@ const SteelCutting: FC = () => {
   };
 
   return (
-    <section className={styles.steelCut}>
-      <Container>
-        <div className={styles.steelCut_inner}>
-          <div className={styles.steelCut_wrapInfo}>
-            <TitleSectionBig text={"Резка листовой стали"} />
-            <SubtitleSectionSmall
-              text={
-                "Предлагаем услугу плазменной резке металла толщиной от 1 до 25 мм с применением технологии автоматической плазменной резке резки по чертежам и эскизам заказчика."
-              }
-            />
-            <p className={styles.steelCut_text}>
-              Преимущества плазменной резки металла: — высокая скорость резки; —
-              способность резать металлы и сплавы толщиной до 25 мм; — низкая
-              стоимость.
-            </p>
+    <Element name={"plasma-cutting"}>
+      <section className={styles.steelCut}>
+        <Container>
+          <div className={styles.steelCut_inner}>
+            <div className={styles.steelCut_wrapInfo}>
+              <TitleSectionBig text={"Резка листовой стали"} />
+              <SubtitleSectionSmall
+                text={
+                  "Предлагаем услугу плазменной резке металла толщиной от 1 до 25 мм с применением технологии автоматической плазменной резке резки по чертежам и эскизам заказчика."
+                }
+              />
+              <p className={styles.steelCut_text}>
+                Преимущества плазменной резки металла: — высокая скорость резки;
+                — способность резать металлы и сплавы толщиной до 25 мм; —
+                низкая стоимость.
+              </p>
 
-            <ul className={styles.steelCut_list}>
-              {SteelCuttingList.map((item) => (
-                <li className={styles.steelCut_item} key={item.id}>
-                  <Image
-                    onClick={() => handleOpenPhoto(item.id)}
-                    className={styles.steelCut_itemImg}
-                    src={item.img}
-                    alt={"Steel cutting"}
-                    width={500}
-                    height={500}
-                  />
-                </li>
-              ))}
-            </ul>
+              <ul className={styles.steelCut_list}>
+                {SteelCuttingList.map((item) => (
+                  <li className={styles.steelCut_item} key={item.id}>
+                    <Image
+                      onClick={() => handleOpenPhoto(item.id)}
+                      className={styles.steelCut_itemImg}
+                      src={item.img}
+                      alt={"Steel cutting"}
+                      width={500}
+                      height={500}
+                    />
+                  </li>
+                ))}
+              </ul>
 
-            <ButtonRound text={"Смотреть портфолио"} onClick={() => ""} />
+              <ButtonRound text={"Смотреть портфолио"} onClick={() => ""} />
+            </div>
+            <div className={styles.steelCut_wrapImg}>
+              <Image
+                className={styles.steelCut_img}
+                src={imageSteelCut.src}
+                alt={"Steel cutting"}
+                width={512}
+                height={768}
+              />
+            </div>
+
+            {isShowModal && (
+              <ModalWindow setShow={setIsShowModal} scrollPage={true}>
+                <SliderGallery
+                  idx_curr={idxCurrPhoto}
+                  list={SteelCuttingList}
+                />
+              </ModalWindow>
+            )}
           </div>
-          <div className={styles.steelCut_wrapImg}>
-            <Image
-              className={styles.steelCut_img}
-              src={imageSteelCut.src}
-              alt={"Steel cutting"}
-              width={512}
-              height={768}
-            />
-          </div>
-
-          {isShowModal && (
-            <ModalWindow setShow={setIsShowModal} scrollPage={true}>
-              <SliderGallery idx_curr={idxCurrPhoto} list={SteelCuttingList} />
-            </ModalWindow>
-          )}
-        </div>
-      </Container>
-    </section>
+        </Container>
+      </section>
+    </Element>
   );
 };
 

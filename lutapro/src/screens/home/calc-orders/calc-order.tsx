@@ -84,6 +84,7 @@ const CalcOrder: FC = () => {
             <SendForm
               title={"ОБРАТНЫЙ ЗВОНОК"}
               text={"Мы свяжемся с вами в ближайшее время"}
+              tag={"#Как мы считаем заказы"}
             />
           </ModalWindow>
         )}

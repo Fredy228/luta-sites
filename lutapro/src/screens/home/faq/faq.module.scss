@@ -11,11 +11,20 @@
     display: flex;
     gap: 50px;
     margin-top: 50px;
+
+    @media screen and (max-width: 767px) {
+      flex-direction: column-reverse;
+      gap: 30px;
+    }
   }
 
   &_wrapAction {
     width: 40%;
     text-align: center;
+
+    @media screen and (max-width: 767px) {
+      width: 100%;
+    }
   }
 
   &_wrapInfo {
@@ -25,6 +34,10 @@
   &_actionImg {
     max-width: 290px;
     margin: 0 auto 30px auto;
+
+    @media screen and (max-width: 767px) {
+      display: none;
+    }
   }
 
   &_actionSpan {
@@ -33,6 +46,10 @@
     color: $color-dark-v2;
     margin-bottom: 20px;
     display: inline-block;
+
+    @media screen and (max-width: 767px) {
+      display: none;
+    }
   }
 
   &_actionName {

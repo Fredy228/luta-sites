@@ -16,6 +16,11 @@
     display: flex;
     gap: 15px;
     margin-top: 50px;
+
+    @media screen and (max-width: 1023px) {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
   }
 
   &_item {
@@ -25,6 +30,15 @@
 
     display: flex;
     flex-direction: column;
+
+    @media screen and (max-width: 1023px) {
+      flex: initial;
+      width: calc(50% - 7.5px);
+    }
+
+    @media screen and (max-width: 767px) {
+      width: 100%;
+    }
   }
 
   &_title {

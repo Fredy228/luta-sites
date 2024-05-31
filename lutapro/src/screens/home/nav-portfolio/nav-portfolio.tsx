@@ -1,3 +1,5 @@
+"use client";
+
 import { type FC } from "react";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
@@ -8,9 +10,18 @@ import styles from "./nav-portfolio.module.scss";
 import Container from "@/components/reused/container/container";
 import Link from "next/link";
 import { ListNavPortfolio } from "@/screens/home/nav-portfolio/list-nav-portfoliio";
-import ButtonRound from "@/components/reused/buttons/button-round";
+import useWindowDimensions from "@/hooks/useWindowDimensions";
 
 const NavPortfolio: FC = () => {
+  const { width } = useWindowDimensions();
+
+  const isMobile = width < 767;
+
+  const calcHeightImgList = (): number => {
+    if (width < 1024) return 150;
+    return 200;
+  };
+
   return (
     <section className={styles.navPortf}>
       <Container>
@@ -18,15 +29,15 @@ const NavPortfolio: FC = () => {
           <ImageList
             className={styles.navPortf_list}
             variant="quilted"
-            cols={4}
-            rowHeight={200}
+            cols={isMobile ? 2 : 4}
+            rowHeight={calcHeightImgList()}
           >
             {ListNavPortfolio.map((item) => (
               <ImageListItem
                 className={styles.navPortf_item}
                 key={item.id}
-                cols={item.cols || 1}
-                rows={item.rows || 1}
+                cols={isMobile ? 1 : item.cols}
+                rows={isMobile ? 1 : item.rows}
               >
                 <Link href={item.url} className={styles.navPortf_link}>
                   <Image

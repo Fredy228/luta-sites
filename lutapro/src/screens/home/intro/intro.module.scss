@@ -1,24 +1,30 @@
 @import "@/styles/variable";
 
 .intro {
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
   flex: 1;
+  margin-top: 30px;
+
+  &_inner {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
 
   &_title,
   &_typingText {
     color: $color-light;
     font-size: 40px;
     font-weight: 700;
-  }
 
-  &_title {
-  }
+    @media screen and (max-width: 1023px) {
+      font-size: 30px;
+    }
 
-  &_typingText {
+    @media screen and (max-width: 767px) {
+      font-size: 22px;
+    }
   }
 
   &_text {
@@ -26,5 +32,10 @@
     font-size: $text-size-lg;
     margin-bottom: 50px;
     margin-top: 15px;
+
+    @media screen and (max-width: 767px) {
+      font-size: $text-size-md;
+      margin-top: 25px;
+    }
   }
 }
