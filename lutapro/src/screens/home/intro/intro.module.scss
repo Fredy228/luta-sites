@@ -4,12 +4,26 @@
   flex: 1;
   margin-top: 30px;
 
+  @media screen and (max-width: 767px) {
+    margin-top: 0;
+  }
+
+  > div {
+    @media screen and (max-width: 767px) {
+      height: 100%;
+    }
+  }
+
   &_inner {
     text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+
+    @media screen and (max-width: 767px) {
+      height: 100%;
+    }
   }
 
   &_title,
