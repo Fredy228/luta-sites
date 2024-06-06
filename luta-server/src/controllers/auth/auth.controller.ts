@@ -56,6 +56,7 @@ export class AuthController {
     @Body() loginBody: LoginAuthDto,
     @Res({ passthrough: true }) res: Response,
   ) {
+    console.log('loginBody', loginBody);
     const userAgent = req['useragent'];
     const foundUser = await this.authService.signInCredentials({
       ...loginBody,

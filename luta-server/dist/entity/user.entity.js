@@ -21,15 +21,11 @@ __decorate([
 __decorate([
     (0, typeorm_1.Column)({ type: 'varchar', length: 100, nullable: false }),
     __metadata("design:type", String)
-], User.prototype, "email", void 0);
+], User.prototype, "username", void 0);
 __decorate([
     (0, typeorm_1.Column)({ type: 'varchar', length: 250, nullable: false }),
     __metadata("design:type", String)
 ], User.prototype, "password", void 0);
-__decorate([
-    (0, typeorm_1.Column)({ type: 'varchar', length: 100, nullable: false }),
-    __metadata("design:type", String)
-], User.prototype, "firstName", void 0);
 __decorate([
     (0, typeorm_1.Column)({
         name: 'createAt',
@@ -53,7 +49,7 @@ __decorate([
 ], User.prototype, "devices", void 0);
 exports.User = User = __decorate([
     (0, typeorm_1.Entity)({ name: 'user' }),
-    (0, typeorm_1.Unique)(['email'])
+    (0, typeorm_1.Unique)(['username'])
 ], User);
 let UserDevices = class UserDevices {
 };

@@ -9,13 +9,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthModule = void 0;
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
-const passport_1 = require("@nestjs/passport");
 const auth_controller_1 = require("./auth.controller");
 const user_entity_1 = require("../../entity/user.entity");
 const auth_service_1 = require("./auth.service");
 const protect_refresh_middleware_1 = require("../../middlewares/protect-refresh.middleware");
 const user_agent_middleware_1 = require("../../middlewares/user-agent.middleware");
-const google_strategy_1 = require("./google.strategy");
 const auth_middleware_service_1 = require("../../services/auth-middleware.service");
 const protect_auth_middleware_1 = require("../../middlewares/protect-auth.middleware");
 let AuthModule = class AuthModule {
@@ -49,16 +47,10 @@ let AuthModule = class AuthModule {
 exports.AuthModule = AuthModule;
 exports.AuthModule = AuthModule = __decorate([
     (0, common_1.Module)({
-        imports: [
-            typeorm_1.TypeOrmModule.forFeature([user_entity_1.User, user_entity_1.UserDevices]),
-            passport_1.PassportModule.register({
-                defaultStrategy: 'google',
-                prompt: 'select_account',
-            }),
-        ],
+        imports: [typeorm_1.TypeOrmModule.forFeature([user_entity_1.User, user_entity_1.UserDevices])],
         controllers: [auth_controller_1.AuthController],
-        providers: [auth_service_1.AuthService, google_strategy_1.GoogleStrategy, auth_middleware_service_1.AuthMiddlewareService],
-        exports: [passport_1.PassportModule],
+        providers: [auth_service_1.AuthService, auth_middleware_service_1.AuthMiddlewareService],
+        exports: [],
     })
 ], AuthModule);
 //# sourceMappingURL=auth.module.js.map

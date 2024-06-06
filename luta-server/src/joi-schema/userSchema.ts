@@ -2,18 +2,7 @@ import * as Joi from 'joi';
 
 export const userCreateSchema = Joi.object()
   .keys({
-    email: Joi.string()
-      .email({ tlds: { allow: false } })
-      .required()
-      .messages({
-        'string.email': 'email|The email is incorrect',
-        'string.empty': 'email|The email is empty.',
-      }),
-    firstName: Joi.string().min(2).max(30).required().messages({
-      'string.empty': 'name|The name is empty.',
-      'string.min': 'name|The name cannot be less than 2 characters',
-      'string.max': 'name|The name cannot be more than 30 characters',
-    }),
+    username: Joi.string().required(),
     password: Joi.string()
       .regex(/(?=.*\d)(?=.*[A-Z])[A-Za-z\d]{8,30}/)
       .required()

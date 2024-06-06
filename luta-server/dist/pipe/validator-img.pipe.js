@@ -17,12 +17,18 @@ let ImageValidatorPipe = class ImageValidatorPipe {
         this.options = options;
     }
     transform(files, { type }) {
+        console.log(`arguments-${type}`, files);
         if (['query', 'body', 'param'].includes(type)) {
             return files;
         }
-        console.log('__files', files);
-        if (!files)
-            return files;
+        if (!files) {
+            if (this.options.nullable) {
+                return files;
+            }
+            else {
+                throw new custom_exception_1.CustomException(common_1.HttpStatus.BAD_REQUEST, `Ви не завантажили ні одного фото`);
+            }
+        }
         for (const key in files) {
             if (Object.prototype.hasOwnProperty.call(files, key)) {
                 files[key].forEach((item) => {

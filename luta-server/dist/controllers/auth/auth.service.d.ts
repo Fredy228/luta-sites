@@ -10,10 +10,10 @@ export declare class AuthService {
     private jwtService;
     private readonly entityManager;
     constructor(usersRepository: Repository<User>, devicesRepository: Repository<UserDevices>, jwtService: JwtService, entityManager: EntityManager);
-    signInCredentials({ email, password, userAgent, }: LoginAuthDto & {
+    signInCredentials({ username, password, userAgent, }: LoginAuthDto & {
         userAgent: Details;
     }): Promise<User & TokenType>;
-    signUpCredentials({ email, password, userAgent, firstName, }: RegisterAuthDto & {
+    signUpCredentials({ username, password, userAgent, }: RegisterAuthDto & {
         userAgent: Details;
     }): Promise<User & TokenType>;
     refreshToken(user: User, currentDevice: UserDevices): Promise<TokenType>;

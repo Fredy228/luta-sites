@@ -5,6 +5,7 @@ import { JwtModule } from '@nestjs/jwt';
 import databaseConfig from './config/database.config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './controllers/auth/auth.module';
+import { GalleryModule } from './controllers/gallery/gallery.module';
 
 dotenv.config();
 
@@ -17,6 +18,7 @@ dotenv.config();
       signOptions: { expiresIn: '7d' },
     }),
     AuthModule,
+    GalleryModule,
   ],
 })
 export class MainModule {}

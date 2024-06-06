@@ -14,6 +14,7 @@ const jwt_1 = require("@nestjs/jwt");
 const database_config_1 = require("./config/database.config");
 const typeorm_1 = require("@nestjs/typeorm");
 const auth_module_1 = require("./controllers/auth/auth.module");
+const gallery_module_1 = require("./controllers/gallery/gallery.module");
 dotenv.config();
 let MainModule = class MainModule {
 };
@@ -28,6 +29,7 @@ exports.MainModule = MainModule = __decorate([
                 signOptions: { expiresIn: '7d' },
             }),
             auth_module_1.AuthModule,
+            gallery_module_1.GalleryModule,
         ],
     })
 ], MainModule);

@@ -38,6 +38,7 @@ let AuthController = class AuthController {
         return createdUser;
     }
     async login(req, loginBody, res) {
+        console.log('loginBody', loginBody);
         const userAgent = req['useragent'];
         const foundUser = await this.authService.signInCredentials({
             ...loginBody,

@@ -27,9 +27,9 @@ let AuthService = class AuthService {
         this.jwtService = jwtService;
         this.entityManager = entityManager;
     }
-    async signInCredentials({ email, password, userAgent, }) {
+    async signInCredentials({ username, password, userAgent, }) {
         const user = await this.usersRepository.findOne({
-            where: { email },
+            where: { username },
             relations: {
                 devices: true,
             },
@@ -44,19 +44,15 @@ let AuthService = class AuthService {
         const tokens = await this.addDeviceAuth(deviceModel, user);
         return { ...user, ...tokens, password: null };
     }
-    async signUpCredentials({ email, password, userAgent, firstName, }) {
-        const userFound = await this.usersRepository.findOneBy({ email });
+    async signUpCredentials({ username, password, userAgent, }) {
+        const userFound = await this.usersRepository.findOneBy({ username });
         if (userFound)
             throw new custom_exception_1.CustomException(common_1.HttpStatus.UNAUTHORIZED, `Such a user already exists`);
         const deviceModel = `${userAgent.platform} ${userAgent.os} ${userAgent.browser}`;
         const hashPass = await (0, hashPassword_1.hashPassword)(password);
-        const name = firstName
-            ? firstName
-            : `user${Math.floor(Math.random() * 90000) + 10000}`;
         const newUser = this.usersRepository.create({
-            email,
+            username,
             password: hashPass,
-            firstName: name,
         });
         await this.usersRepository.save(newUser);
         const tokens = await this.addDeviceAuth(deviceModel, newUser);
@@ -96,7 +92,7 @@ let AuthService = class AuthService {
         return tokens;
     }
     createToken(user) {
-        const payload = { email: user.email, id: user.id };
+        const payload = { username: user.username, id: user.id };
         const accessToken = this.jwtService.sign(payload, { expiresIn: '45m' });
         const refreshToken = this.jwtService.sign(payload);
         return { accessToken, refreshToken };

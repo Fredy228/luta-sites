@@ -11,15 +11,24 @@ type TFileImg = {
 };
 @Injectable()
 export class ImageValidatorPipe implements PipeTransform {
-  constructor(private options: { maxSize: number }) {}
+  constructor(private options: { maxSize: number; nullable: boolean }) {}
 
   transform(files: TFileImg, { type }: ArgumentMetadata) {
+    console.log(`arguments-${type}`, files);
     if (['query', 'body', 'param'].includes(type)) {
       return files;
     }
 
-    console.log('__files', files);
-    if (!files) return files;
+    if (!files) {
+      if (this.options.nullable) {
+        return files;
+      } else {
+        throw new CustomException(
+          HttpStatus.BAD_REQUEST,
+          `Ви не завантажили ні одного фото`,
+        );
+      }
+    }
 
     for (const key in files) {
       if (Object.prototype.hasOwnProperty.call(files, key)) {

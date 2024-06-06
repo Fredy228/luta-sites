@@ -23,12 +23,12 @@ export class AuthService {
   ) {}
 
   async signInCredentials({
-    email,
+    username,
     password,
     userAgent,
   }: LoginAuthDto & { userAgent: Details }): Promise<User & TokenType> {
     const user = await this.usersRepository.findOne({
-      where: { email },
+      where: { username },
       relations: {
         devices: true,
       },
@@ -57,12 +57,11 @@ export class AuthService {
   }
 
   async signUpCredentials({
-    email,
+    username,
     password,
     userAgent,
-    firstName,
   }: RegisterAuthDto & { userAgent: Details }): Promise<User & TokenType> {
-    const userFound = await this.usersRepository.findOneBy({ email });
+    const userFound = await this.usersRepository.findOneBy({ username });
     if (userFound)
       throw new CustomException(
         HttpStatus.UNAUTHORIZED,
@@ -73,14 +72,9 @@ export class AuthService {
 
     const hashPass = await hashPassword(password);
 
-    const name = firstName
-      ? firstName
-      : `user${Math.floor(Math.random() * 90000) + 10000}`;
-
     const newUser = this.usersRepository.create({
-      email,
+      username,
       password: hashPass,
-      firstName: name,
     });
     await this.usersRepository.save(newUser);
 
@@ -138,7 +132,7 @@ export class AuthService {
   }
 
   createToken(user: User): TokenType {
-    const payload = { email: user.email, id: user.id };
+    const payload = { username: user.username, id: user.id };
 
     const accessToken = this.jwtService.sign(payload, { expiresIn: '45m' });
     const refreshToken = this.jwtService.sign(payload);
