@@ -50,7 +50,11 @@ export class ImageService {
 
   async deleteImages(filePaths: string[]): Promise<void> {
     try {
-      await Promise.all(filePaths.map((filePath: string) => unlink(filePath)));
+      await Promise.all(
+        filePaths.map((filePath: string) =>
+          unlink(join(process.cwd(), 'static', filePath)),
+        ),
+      );
     } catch (err) {
       console.error(err);
       throw new CustomException(

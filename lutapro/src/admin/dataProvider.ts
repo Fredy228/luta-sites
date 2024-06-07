@@ -21,7 +21,7 @@ const httpClient = async (url: string, options: Record<string, any> = {}) => {
     console.log("response", response);
     return response;
   } catch (e: any) {
-    console.log(e.body);
+    console.log(e.body.message);
     if (e.status && e.status === 401) {
       console.log("refreshing token from server...");
 
@@ -47,7 +47,9 @@ const httpClient = async (url: string, options: Record<string, any> = {}) => {
         return Promise.reject(e);
       }
     } else if (e.status && e.status === 400) {
-      return Promise.reject("Проверьте правильность данных");
+      return Promise.reject(
+        e?.body?.message || "Проверьте правильность данных",
+      );
     }
     return Promise.reject("Неизвестная ошибка");
   }

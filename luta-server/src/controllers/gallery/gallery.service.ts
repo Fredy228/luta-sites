@@ -1,10 +1,12 @@
-import { Injectable } from '@nestjs/common';
-import { Repository } from 'typeorm';
+import { HttpStatus, Injectable } from '@nestjs/common';
+import { EntityManager, Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Gallery } from '../../entity/gallery.entity';
 import { GalleryDto } from './gallery.dto';
 import { ImageService } from '../../services/image.service';
 import { GalleryTypeEnum } from '../../enum/gallery-type.enum';
+import { CustomException } from '../../services/custom-exception';
+import { QueryGetAllType } from '../../types/query';
 
 @Injectable()
 export class GalleryService {
@@ -12,6 +14,7 @@ export class GalleryService {
     @InjectRepository(Gallery)
     private galleryRepository: Repository<Gallery>,
     private readonly imageService: ImageService,
+    private readonly entityManager: EntityManager,
   ) {}
 
   async createOne(
@@ -31,13 +34,16 @@ export class GalleryService {
     return newPhoto;
   }
 
-  async getAll(type: GalleryTypeEnum = GalleryTypeEnum.LAST_WORKS): Promise<{
+  async getAll({ range, filter, sort }: QueryGetAllType): Promise<{
     data: Gallery[];
     total: number;
   }> {
     const [result, total] = await this.galleryRepository.findAndCount({
       where: {
-        type,
+        ...filter,
+      },
+      order: {
+        [sort[0]]: sort[1],
       },
     });
 
@@ -45,5 +51,43 @@ export class GalleryService {
       data: result,
       total,
     };
+  }
+
+  async getOne(id: number): Promise<Gallery> {
+    if (!id)
+      throw new CustomException(
+        HttpStatus.BAD_REQUEST,
+        `ID ${id} не корректное`,
+      );
+
+    const gallery = await this.galleryRepository.findOneBy({
+      id,
+    });
+
+    if (!gallery)
+      throw new CustomException(
+        HttpStatus.NOT_FOUND,
+        `Фото не найдено (ID ${id})`,
+      );
+
+    return gallery;
+  }
+
+  async deleteById(id: number): Promise<Gallery> {
+    if (!id)
+      throw new CustomException(
+        HttpStatus.BAD_REQUEST,
+        `ID ${id} не корректное`,
+      );
+
+    return this.entityManager.transaction(async (entityManager) => {
+      const gallery = await this.getOne(id);
+
+      await entityManager.delete(Gallery, gallery.id);
+
+      await this.imageService.deleteImages([gallery.path]);
+
+      return gallery;
+    });
   }
 }

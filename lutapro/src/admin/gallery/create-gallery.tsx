@@ -9,7 +9,7 @@ import {
 import { GalleryTypeEnum } from "@/types/gallery";
 
 const GalleryCreate = (props: any) => (
-  <Create {...props}>
+  <Create {...props} title={"Добавить картинку для сайта LutaPro"}>
     <SimpleForm>
       <ImageInput
         source="file"

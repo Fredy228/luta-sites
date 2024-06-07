@@ -15,6 +15,9 @@ const GalleryCreate = dynamic(() => import("./gallery/create-gallery"), {
 const GalleryList = dynamic(() => import("./gallery/list-gallery"), {
   ssr: false,
 });
+const GalleryShow = dynamic(() => import("./gallery/show-gallery"), {
+  ssr: false,
+});
 
 export const MyLayout = (props: any) => (
   <>
@@ -31,7 +34,15 @@ const Admin: FC = () => {
       authProvider={authProvider}
       layout={MyLayout}
     >
-      <Resource name="gallery" list={GalleryList} create={GalleryCreate} />
+      <Resource
+        name="gallery-luta"
+        list={GalleryList}
+        create={GalleryCreate}
+        show={GalleryShow}
+        options={{
+          label: "Галерея LutaPro",
+        }}
+      />
     </AdminComponent>
   );
 };

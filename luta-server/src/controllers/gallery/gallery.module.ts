@@ -17,12 +17,20 @@ export class GalleryModule {
   configure(consumer: MiddlewareConsumer) {
     consumer.apply(ProtectAuthMiddleware).forRoutes(
       {
-        path: 'api/gallery',
+        path: 'api/gallery-luta',
         method: RequestMethod.POST,
       },
       {
-        path: 'api/gallery',
+        path: 'api/gallery-luta',
         method: RequestMethod.GET,
+      },
+      {
+        path: 'api/gallery-luta/:id',
+        method: RequestMethod.GET,
+      },
+      {
+        path: 'api/gallery-luta/:id',
+        method: RequestMethod.DELETE,
       },
     );
   }
