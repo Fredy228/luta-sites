@@ -18,6 +18,9 @@ const GalleryList = dynamic(() => import("./gallery/list-gallery"), {
 const GalleryShow = dynamic(() => import("./gallery/show-gallery"), {
   ssr: false,
 });
+const GalleryEdit = dynamic(() => import("./gallery/gallery-edit"), {
+  ssr: false,
+});
 
 export const MyLayout = (props: any) => (
   <>
@@ -38,6 +41,7 @@ const Admin: FC = () => {
         name="gallery-luta"
         list={GalleryList}
         create={GalleryCreate}
+        edit={GalleryEdit}
         show={GalleryShow}
         options={{
           label: "Галерея LutaPro",

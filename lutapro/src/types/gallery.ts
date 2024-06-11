@@ -5,3 +5,9 @@ export enum GalleryTypeEnum {
   FREZEROVKA = "frezerovka",
   THREED_PANEL = "3dpanel",
 }
+
+export interface GalleryItem {
+  id: number;
+  title: string;
+  path: string;
+}

@@ -21,10 +21,6 @@ export class GalleryModule {
         method: RequestMethod.POST,
       },
       {
-        path: 'api/gallery-luta',
-        method: RequestMethod.GET,
-      },
-      {
         path: 'api/gallery-luta/:id',
         method: RequestMethod.GET,
       },
@@ -32,6 +28,10 @@ export class GalleryModule {
         path: 'api/gallery-luta/:id',
         method: RequestMethod.DELETE,
       },
+      // {
+      //   path: 'api/gallery-luta/:id',
+      //   method: RequestMethod.PUT,
+      // },
     );
   }
 }

@@ -1,38 +1,29 @@
+import React from "react";
 import {
-  Create,
+  Edit,
   SimpleForm,
   TextInput,
-  ImageInput,
-  ImageField,
   SelectInput,
+  ImageField,
+  ImageInput,
 } from "react-admin";
 import { GalleryTypeEnum } from "@/types/gallery";
 
-const GalleryCreate = (props: any) => (
-  <Create
-    {...props}
-    title={"Добавить картинку для сайта LutaPro"}
-    redirect="list"
-  >
+const GalleryEdit = (props: any) => (
+  <Edit {...props} title={"Редактирование картинки сайта LutaPro"}>
     <SimpleForm>
       <ImageInput
         source="file"
-        label="Выберете картинку"
+        label="Выберете картинку чтобы заменить на новую"
         accept="image/jpeg, image/png, image/jpg, image/svg+xml, image/webp, image/svg"
         name={"file"}
         placeholder={"Нажмите или перетяните картинку чтобы загрузить"}
       >
         <ImageField source="src" title="title" />
       </ImageInput>
-      <TextInput
-        name={"title"}
-        source="title"
-        required={true}
-        label={"Описание"}
-      />
+      <TextInput source="title" />
       <SelectInput
         source="type"
-        required={true}
         label={"Раздел"}
         name={"type"}
         choices={[
@@ -44,7 +35,7 @@ const GalleryCreate = (props: any) => (
         ]}
       />
     </SimpleForm>
-  </Create>
+  </Edit>
 );
 
-export default GalleryCreate;
+export default GalleryEdit;

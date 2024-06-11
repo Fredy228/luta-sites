@@ -1,4 +1,4 @@
-import { type NextPage } from "next";
+import { GetStaticProps, type NextPage } from "next";
 
 import styles from "./home.module.scss";
 
@@ -18,8 +18,13 @@ import CalcOrder from "@/screens/home/calc-orders/calc-order";
 import FAQ from "@/screens/home/faq/faq";
 import Map from "@/components/ui/map/map";
 import Footer from "@/components/ui/footer/footer";
+import { GalleryItem, GalleryTypeEnum } from "@/types/gallery";
+import { getAllGallery } from "@/services/axios";
 
-const Home: NextPage = () => {
+type Props = {
+  galleryLastWork: GalleryItem[];
+};
+const Home: NextPage<Props> = ({ galleryLastWork }) => {
   return (
     <>
       <div
@@ -33,7 +38,7 @@ const Home: NextPage = () => {
         <IntroHome />
       </div>
       <main>
-        <Gallery />
+        <Gallery list={galleryLastWork} />
         <SteelCutting />
         <Milling />
         <NavPortfolio />

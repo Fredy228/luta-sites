@@ -6,7 +6,9 @@ import {
   HttpCode,
   HttpStatus,
   Param,
+  Patch,
   Post,
+  Put,
   Query,
   Res,
   UploadedFiles,
@@ -19,8 +21,11 @@ import { GalleryService } from './gallery.service';
 import { GalleryDto } from './gallery.dto';
 import { Response } from 'express';
 import { BodyValidationPipe } from '../../pipe/validator-body.pipe';
-import { galleryCreateSchema } from '../../joi-schema/gallerySchema';
-import { QueryGetAllStringifyType, QueryGetAllType } from '../../types/query';
+import {
+  galleryCreateSchema,
+  galleryUpdateSchema,
+} from '../../joi-schema/gallerySchema';
+import { QueryGetAllStringifyType } from '../../types/query';
 import { parseQueryGetAll } from '../../services/parseQuery';
 
 @Controller('api/gallery-luta')
@@ -41,7 +46,10 @@ export class GalleryController {
       file?: Array<Express.Multer.File>;
     },
   ) {
-    return this.galleryService.createOne(body, files?.file[0]);
+    return this.galleryService.createOne(
+      body,
+      files?.file?.length > 0 ? files?.file[0] : null,
+    );
   }
 
   @Get('/')
@@ -59,7 +67,9 @@ export class GalleryController {
     res
       .setHeader(
         'Content-Range',
-        `gallery ${range[0]}-${range[1]}/${galleries.total}`,
+        range && range.length === 2
+          ? `gallery ${range[0]}-${range[1]}/${galleries.total}`
+          : galleries.total,
       )
       .json(galleries.data);
   }
@@ -74,5 +84,27 @@ export class GalleryController {
   @HttpCode(HttpStatus.OK)
   async deleteById(@Param('id') id: string) {
     return this.galleryService.deleteById(Number(id));
+  }
+
+  @Put('/:id')
+  @HttpCode(HttpStatus.OK)
+  @UsePipes(
+    new ImageValidatorPipe({ maxSize: 10, nullable: true }),
+    new BodyValidationPipe(galleryUpdateSchema),
+  )
+  @UseInterceptors(FileFieldsInterceptor([{ name: 'file', maxCount: 1 }]))
+  async updateById(
+    @Param('id') id: string,
+    @Body() body: Partial<GalleryDto>,
+    @UploadedFiles()
+    files: {
+      file?: Array<Express.Multer.File>;
+    },
+  ) {
+    return this.galleryService.updateById(
+      Number(id),
+      body,
+      files?.file?.length > 0 ? files?.file[0] : null,
+    );
   }
 }

@@ -13,11 +13,13 @@ const typeChoices = [
 const TypeFilter = (props: any) => (
   <Filter {...props}>
     <SelectInput
+      name={"type"}
       label="Раздел"
       source="type"
       choices={typeChoices}
       defaultValue={GalleryTypeEnum.LAST_WORKS}
     />
+    <TextInput name={"title"} source="title" label={"Описание"} />
   </Filter>
 );
 

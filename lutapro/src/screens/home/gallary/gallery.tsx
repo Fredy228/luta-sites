@@ -23,8 +23,12 @@ const ModalWindow = dynamic(
 import { galleryList } from "@/screens/home/gallary/gallery-list";
 import SliderGallery from "@/components/ui/slider-gallery/slider-gallery";
 import useWindowDimensions from "@/hooks/useWindowDimensions";
+import { GalleryItem } from "@/types/gallery";
 
-const Gallery: FC = () => {
+type Props = {
+  list?: GalleryItem[];
+};
+const Gallery: FC<Props> = ({ list = [] }) => {
   const [isShowModal, setIsShowModal] = useState<boolean>(false);
   const [idxCurrPhoto, setIdxCurrPhoto] = useState<number>(1);
 
@@ -58,12 +62,12 @@ const Gallery: FC = () => {
               cols={calcColumImageList()}
               gap={8}
             >
-              {galleryList.map((item) => (
-                <ImageListItem key={item.img}>
+              {list.map((item) => (
+                <ImageListItem key={item.id}>
                   <Image
                     className={styles.gallery_img}
-                    src={`${item.img}`}
-                    alt={"Our works"}
+                    src={`${process.env.SERVER_URL}/${item.path}`}
+                    alt={item.title}
                     width={500}
                     height={500}
                     onClick={() => handleOpenPhoto(item.id)}

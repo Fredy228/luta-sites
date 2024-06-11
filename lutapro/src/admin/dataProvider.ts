@@ -1,4 +1,4 @@
-import { CreateParams, fetchUtils } from "react-admin";
+import { CreateParams, DataProvider, fetchUtils } from "react-admin";
 import simpleRestProvider from "ra-data-simple-rest";
 import { get, set, remove } from "local-storage";
 
@@ -40,6 +40,7 @@ const httpClient = async (url: string, options: Record<string, any> = {}) => {
         };
 
         const response = await fetchUtils.fetchJson(url, options);
+        console.log("response", response);
         return response;
       } else {
         remove("token");
@@ -57,12 +58,10 @@ const httpClient = async (url: string, options: Record<string, any> = {}) => {
 
 const dataProvider = simpleRestProvider(apiUrl, httpClient, "Content-Range");
 
-const customProvider = {
+const customProvider: DataProvider = {
   ...dataProvider,
   create: (resource: string, params: CreateParams<any>) => {
-    console.log("params", params);
     if (params.data.hasOwnProperty("file")) {
-      console.log("params.data.file", params.data.file);
       if (!params.data.file) return Promise.reject("Вы не загрузили картинку");
       const { file, ...other } = params.data;
       const dataForm = new FormData();
@@ -77,6 +76,24 @@ const customProvider = {
 
     return httpClient(`${apiUrl}/${resource}`, {
       method: "POST",
+      body: params.data,
+    }).then(({ json }) => ({ data: json }));
+  },
+  update: (resource, params) => {
+    console.log(params);
+    const { file, ...other } = params.data;
+    const dataForm = new FormData();
+    if (params.data.hasOwnProperty("file") && params.data.file) {
+      dataForm.append("file", file.rawFile);
+    }
+    Object.keys(other).forEach((key) => {
+      dataForm.append(key, other[key]);
+    });
+
+    params.data = dataForm;
+
+    return httpClient(`${apiUrl}/${resource}/${params.id}`, {
+      method: "PUT",
       body: params.data,
     }).then(({ json }) => ({ data: json }));
   },
