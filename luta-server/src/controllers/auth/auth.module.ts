@@ -13,7 +13,6 @@ import { ProtectAuthMiddleware } from '../../middlewares/protect-auth.middleware
   imports: [TypeOrmModule.forFeature([User, UserDevices])],
   controllers: [AuthController],
   providers: [AuthService, AuthMiddlewareService],
-  exports: [],
 })
 export class AuthModule {
   configure(consumer: MiddlewareConsumer) {

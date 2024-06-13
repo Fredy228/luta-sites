@@ -1,6 +1,7 @@
 "use client";
 
 import { type FC } from "react";
+import CircularProgress from "@mui/material/CircularProgress";
 
 import styles from "./buttons.module.scss";
 
@@ -10,6 +11,7 @@ type Props = {
   onClick?: () => any;
   version?: "color" | "grey";
   style?: Record<string, string>;
+  isLoading?: boolean;
 };
 const ButtonRound: FC<Props> = ({
   type = "button",
@@ -17,6 +19,7 @@ const ButtonRound: FC<Props> = ({
   onClick,
   version = "color",
   style = {},
+  isLoading = false,
 }) => {
   return (
     <button
@@ -25,7 +28,7 @@ const ButtonRound: FC<Props> = ({
       className={`${styles.btn_round} ${version === "color" ? styles.color : styles.grey}`}
       onClick={onClick}
     >
-      {text}
+      {isLoading ? <CircularProgress /> : text}
     </button>
   );
 };

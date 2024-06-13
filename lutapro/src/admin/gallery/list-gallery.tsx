@@ -25,9 +25,9 @@ const GalleryList = (props: any) => {
         <TextField source="title" label={"Описание"} />
         <CustomImageField source="path" label="Картинка" />
         <ChipField source="type" label={"Раздел"} />
-        <ShowButton />
-        <EditButton />
-        <DeleteButton />
+        <ShowButton label={"Показать"} />
+        <EditButton label={"Ред."} />
+        <DeleteButton label={"Удалить"} />
       </Datagrid>
     </List>
   );

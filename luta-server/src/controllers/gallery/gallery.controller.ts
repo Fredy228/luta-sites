@@ -27,6 +27,7 @@ import {
 } from '../../joi-schema/gallerySchema';
 import { QueryGetAllStringifyType } from '../../types/query';
 import { parseQueryGetAll } from '../../services/parseQuery';
+import { SiteEnum } from '../../enum/site.enum';
 
 @Controller('api/gallery-luta')
 export class GalleryController {
@@ -49,6 +50,7 @@ export class GalleryController {
     return this.galleryService.createOne(
       body,
       files?.file?.length > 0 ? files?.file[0] : null,
+      SiteEnum.LUTA_PRO,
     );
   }
 
@@ -62,7 +64,10 @@ export class GalleryController {
     const { range, filter, sort } = parseQueryGetAll(query);
     console.log('query', query);
 
-    const galleries = await this.galleryService.getAll({ range, filter, sort });
+    const galleries = await this.galleryService.getAll(
+      { range, filter, sort },
+      SiteEnum.LUTA_PRO,
+    );
 
     res
       .setHeader(

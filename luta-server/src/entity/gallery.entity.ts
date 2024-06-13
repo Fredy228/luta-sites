@@ -1,5 +1,6 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import { GalleryTypeEnum } from '../enum/gallery-type.enum';
+import { SiteEnum } from '../enum/site.enum';
 
 @Entity('gallery')
 export class Gallery {
@@ -15,6 +16,13 @@ export class Gallery {
     nullable: false,
   })
   type: GalleryTypeEnum;
+
+  @Column({
+    type: 'enum',
+    enum: SiteEnum,
+    nullable: false,
+  })
+  site: SiteEnum;
 
   @Column({ type: 'varchar', length: 250, nullable: false })
   title: string;

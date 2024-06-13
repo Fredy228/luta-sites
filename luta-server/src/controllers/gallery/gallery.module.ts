@@ -5,8 +5,8 @@ import { ProtectAuthMiddleware } from '../../middlewares/protect-auth.middleware
 import { Gallery } from '../../entity/gallery.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ImageService } from '../../services/image.service';
-import { AuthMiddlewareService } from '../../services/auth-middleware.service';
 import { User } from '../../entity/user.entity';
+import { AuthMiddlewareService } from '../../services/auth-middleware.service';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Gallery, User])],
@@ -28,10 +28,10 @@ export class GalleryModule {
         path: 'api/gallery-luta/:id',
         method: RequestMethod.DELETE,
       },
-      // {
-      //   path: 'api/gallery-luta/:id',
-      //   method: RequestMethod.PUT,
-      // },
+      {
+        path: 'api/gallery-luta/:id',
+        method: RequestMethod.PUT,
+      },
     );
   }
 }

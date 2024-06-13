@@ -6,6 +6,7 @@ import databaseConfig from './config/database.config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './controllers/auth/auth.module';
 import { GalleryModule } from './controllers/gallery/gallery.module';
+import { SmsOrderModule } from './controllers/sms-order/sms-order.module';
 
 dotenv.config();
 
@@ -19,6 +20,7 @@ dotenv.config();
     }),
     AuthModule,
     GalleryModule,
+    SmsOrderModule,
   ],
 })
 export class MainModule {}

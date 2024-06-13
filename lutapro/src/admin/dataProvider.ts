@@ -5,9 +5,6 @@ import { get, set, remove } from "local-storage";
 const apiUrl = "http://localhost:3333/api";
 
 const httpClient = async (url: string, options: Record<string, any> = {}) => {
-  console.log("Fetching data from server...");
-  console.log("options", options);
-
   const token = get("token");
   if (token) {
     options.user = {
@@ -18,10 +15,8 @@ const httpClient = async (url: string, options: Record<string, any> = {}) => {
 
   try {
     const response = await fetchUtils.fetchJson(url, options);
-    console.log("response", response);
     return response;
   } catch (e: any) {
-    console.log(e.body.message);
     if (e.status && e.status === 401) {
       console.log("refreshing token from server...");
 
@@ -80,7 +75,6 @@ const customProvider: DataProvider = {
     }).then(({ json }) => ({ data: json }));
   },
   update: (resource, params) => {
-    console.log(params);
     const { file, ...other } = params.data;
     const dataForm = new FormData();
     if (params.data.hasOwnProperty("file") && params.data.file) {

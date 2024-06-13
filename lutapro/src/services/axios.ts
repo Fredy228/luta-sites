@@ -22,3 +22,20 @@ export const getAllGallery = async (
 
   return data.json();
 };
+
+export const sendSmsOrder = async (body: {
+  file?: File;
+  phone: string;
+  name: string;
+  message?: string;
+  email: string;
+}) => {
+  const formData = new FormData();
+  if (body.file) formData.append("file", body.file);
+  if (body.message) formData.append("message", body.message);
+  formData.append("phone", body.phone);
+  formData.append("name", body.name);
+  formData.append("email", body.email);
+
+  await axios.post("/api/sms-order-luta", formData);
+};

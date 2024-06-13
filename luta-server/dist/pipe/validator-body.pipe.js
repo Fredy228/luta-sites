@@ -20,6 +20,7 @@ let BodyValidationPipe = class BodyValidationPipe {
         if (metadata.type !== 'body') {
             return value;
         }
+        console.log(value);
         const { error } = this.schema.validate(value);
         console.log(error);
         if (error) {

@@ -21,6 +21,12 @@ const GalleryShow = dynamic(() => import("./gallery/show-gallery"), {
 const GalleryEdit = dynamic(() => import("./gallery/gallery-edit"), {
   ssr: false,
 });
+const SmsOrderList = dynamic(() => import("./sms-order/list-sms-order"), {
+  ssr: false,
+});
+const SmsOrderShow = dynamic(() => import("./sms-order/show-sms-order"), {
+  ssr: false,
+});
 
 export const MyLayout = (props: any) => (
   <>
@@ -45,6 +51,14 @@ const Admin: FC = () => {
         show={GalleryShow}
         options={{
           label: "Галерея LutaPro",
+        }}
+      />
+      <Resource
+        name="sms-order-luta"
+        list={SmsOrderList}
+        show={SmsOrderShow}
+        options={{
+          label: "Заявки LutaPro",
         }}
       />
     </AdminComponent>

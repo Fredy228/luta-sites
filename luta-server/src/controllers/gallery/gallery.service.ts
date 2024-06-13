@@ -6,6 +6,7 @@ import { GalleryDto } from './gallery.dto';
 import { ImageService } from '../../services/image.service';
 import { CustomException } from '../../services/custom-exception';
 import { QueryGetAllType } from '../../types/query';
+import { SiteEnum } from '../../enum/site.enum';
 
 @Injectable()
 export class GalleryService {
@@ -19,6 +20,7 @@ export class GalleryService {
   async createOne(
     body: GalleryDto,
     photo: Express.Multer.File | null,
+    site: SiteEnum,
   ): Promise<Gallery> {
     if (!photo)
       throw new CustomException(
@@ -32,6 +34,7 @@ export class GalleryService {
       title: body.title,
       path,
       type: body.type,
+      site,
     });
 
     await this.galleryRepository.save(newPhoto);
@@ -39,12 +42,16 @@ export class GalleryService {
     return newPhoto;
   }
 
-  async getAll({ range, filter, sort }: QueryGetAllType): Promise<{
+  async getAll(
+    { range, filter, sort }: QueryGetAllType,
+    site: SiteEnum,
+  ): Promise<{
     data: Gallery[];
     total: number;
   }> {
     const filterOption: { [key: string]: any } = {
       ...filter,
+      site,
     };
     if (filter.title) filterOption.title = Like('%' + filter.title + '%');
 

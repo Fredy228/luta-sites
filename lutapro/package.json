@@ -29,6 +29,7 @@
     "react-dom": "^18",
     "react-imask": "^7.6.1",
     "react-scroll": "^1.9.0",
+    "react-toastify": "^10.0.5",
     "react-typed": "^2.0.12",
     "sass": "^1.77.1",
     "swiper": "^11.1.3"

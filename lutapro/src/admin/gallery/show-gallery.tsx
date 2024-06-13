@@ -1,4 +1,11 @@
-import { Show, SimpleShowLayout, TextField, ChipField } from "react-admin";
+import {
+  Show,
+  SimpleShowLayout,
+  TextField,
+  ChipField,
+  DeleteButton,
+  EditButton,
+} from "react-admin";
 import CustomImageField from "@/admin/components/custom-image-field";
 
 export const GalleryShow = (props: any) => (
@@ -9,6 +16,8 @@ export const GalleryShow = (props: any) => (
       <TextField source="title" />
       <ChipField source="type" label={"Раздел"} />
       <TextField source="path" label={"Путь"} />
+      <EditButton label={"Ред."} />
+      <DeleteButton label={"Удалить"} />
     </SimpleShowLayout>
   </Show>
 );
