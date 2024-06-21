@@ -3,6 +3,7 @@
 import { type FC, useState } from "react";
 import Image from "next/image";
 import { Element } from "react-scroll";
+import dynamic from "next/dynamic";
 
 import styles from "./steel-cutting.module.scss";
 
@@ -17,9 +18,8 @@ import imageMilling from "@/../public/img/steel-cutting/milling.webp";
 import { SubtitleSectionSmall } from "@/components/reused/common/title-section-small";
 import ButtonRound from "@/components/reused/buttons/button-round";
 import { TitleSectionBig } from "@/components/reused/common/title-section-big";
-import { MillingList } from "@/screens/home/steel-cutting/milling-list";
+import { List } from "@/screens/home/steel-cutting/list";
 import { galleryList } from "@/screens/home/gallary/gallery-list";
-import dynamic from "next/dynamic";
 import SliderGallery from "@/components/ui/slider-gallery/slider-gallery";
 
 const Milling: FC = () => {
@@ -59,7 +59,7 @@ const Milling: FC = () => {
               </p>
 
               <ul className={styles.steelCut_list}>
-                {MillingList.map((item) => (
+                {List.map((item) => (
                   <li className={styles.steelCut_item} key={item.id}>
                     <Image
                       className={styles.steelCut_itemImg}
@@ -73,11 +73,15 @@ const Milling: FC = () => {
                 ))}
               </ul>
 
-              <ButtonRound text={"Смотреть портфолио"} onClick={() => ""} />
+              <ButtonRound
+                text={"Смотреть портфолио"}
+                isLink={true}
+                link={"/rezba"}
+              />
             </div>
             {isShowModal && (
               <ModalWindow setShow={setIsShowModal} scrollPage={true}>
-                <SliderGallery idx_curr={idxCurrPhoto} list={MillingList} />
+                <SliderGallery idx_curr={idxCurrPhoto} list={List} />
               </ModalWindow>
             )}
           </div>

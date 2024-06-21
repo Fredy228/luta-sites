@@ -35,10 +35,36 @@ let AuthService = class AuthService {
             },
         });
         if (!user)
-            throw new custom_exception_1.CustomException(common_1.HttpStatus.UNAUTHORIZED, `Username or password is wrong`);
+            throw new custom_exception_1.CustomException(common_1.HttpStatus.UNAUTHORIZED, `Имя пользователя или пароль неверный`);
+        if (user.isBlock)
+            throw new custom_exception_1.CustomException(423, `Пользователь заблокирован`);
+        const is_time_try = user.login_time &&
+            new Date().getTime() - new Date(user.login_time).getTime() < 3600 * 1000;
+        if (is_time_try) {
+            const time_try = new Date().getTime() - user.login_time.getTime();
+            throw new custom_exception_1.CustomException(425, `Повторите попытку через ${Math.round(time_try / 1000 / 60)} минут`);
+        }
         const isValidPass = await (0, hashPassword_1.checkPassword)(password, user.password);
-        if (!isValidPass)
-            throw new custom_exception_1.CustomException(common_1.HttpStatus.UNAUTHORIZED, `Username or password is wrong`);
+        if (!isValidPass) {
+            if (user.login_attempts === 5 || user.login_attempts === 10) {
+                await this.usersRepository.update(user.id, {
+                    login_time: new Date(),
+                });
+            }
+            if (user.login_attempts > 14) {
+                await this.usersRepository.update(user.id, {
+                    isBlock: true,
+                });
+            }
+            await this.usersRepository.update(user.id, {
+                login_attempts: user.login_attempts ? user.login_attempts + 1 : 1,
+            });
+            throw new custom_exception_1.CustomException(common_1.HttpStatus.UNAUTHORIZED, `Имя пользователя или пароль неверный`);
+        }
+        await this.usersRepository.update(user.id, {
+            login_attempts: 0,
+            login_time: null,
+        });
         const deviceModel = `${userAgent.platform} ${userAgent.os} ${userAgent.browser}`;
         await this.deleteOldSession(user.devices);
         const tokens = await this.addDeviceAuth(deviceModel, user);
@@ -58,7 +84,10 @@ let AuthService = class AuthService {
         const tokens = await this.addDeviceAuth(deviceModel, newUser);
         return { ...newUser, ...tokens, password: null };
     }
-    async refreshToken(user, currentDevice) {
+    async refreshToken(user, currentDevice, userAgent) {
+        const deviceModel = `${userAgent?.platform} ${userAgent?.os} ${userAgent?.browser}`;
+        if (deviceModel !== currentDevice.deviceModel)
+            throw new custom_exception_1.CustomException(common_1.HttpStatus.UNAUTHORIZED, `Login from an untrusted device`);
         const newTokens = this.createToken(user);
         await this.devicesRepository.update(currentDevice, {
             accessToken: newTokens.accessToken,

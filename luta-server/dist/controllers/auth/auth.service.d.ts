@@ -16,7 +16,7 @@ export declare class AuthService {
     signUpCredentials({ username, password, userAgent, }: RegisterAuthDto & {
         userAgent: Details;
     }): Promise<User & TokenType>;
-    refreshToken(user: User, currentDevice: UserDevices): Promise<TokenType>;
+    refreshToken(user: User, currentDevice: UserDevices, userAgent: Details): Promise<TokenType>;
     logout(currentDevice: UserDevices): Promise<void>;
     deleteOldSession(devices: UserDevices[]): Promise<import("typeorm").DeleteResult[]>;
     addDeviceAuth(deviceModel: string, userId: User): Promise<TokenType>;

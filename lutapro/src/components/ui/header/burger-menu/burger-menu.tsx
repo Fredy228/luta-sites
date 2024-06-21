@@ -8,7 +8,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import styles from "./burger-menu.module.scss";
 
 import logoImg from "@/../public/img/general/logo-lutapro.webp";
-import { listNavigation } from "@/components/ui/header/list-nav";
+import { ListNavType } from "@/components/ui/header/list-nav";
 import ButtonRound from "@/components/reused/buttons/button-round";
 import { IconCross, IconFacebook } from "@/components/reused/icon/icon";
 import dynamic from "next/dynamic";
@@ -22,8 +22,9 @@ const ModalWindow = dynamic(
 
 type Props = {
   setIsShow: Dispatch<SetStateAction<boolean>>;
+  listMenu: ListNavType[];
 };
-const BurgerMenu: FC<Props> = ({ setIsShow }) => {
+const BurgerMenu: FC<Props> = ({ setIsShow, listMenu }) => {
   const [isShowForm, setIsShowForm] = useState<boolean>(false);
 
   return (
@@ -52,7 +53,7 @@ const BurgerMenu: FC<Props> = ({ setIsShow }) => {
         </div>
         <nav className={styles.menu_nav}>
           <ul className={styles.menu_list}>
-            {listNavigation.map((item) => (
+            {listMenu.map((item) => (
               <li className={styles.menu_item} key={item.id}>
                 <Link
                   className={styles.menu_link}

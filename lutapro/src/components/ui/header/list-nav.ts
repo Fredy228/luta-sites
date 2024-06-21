@@ -1,10 +1,10 @@
-type ListNavType = {
+export type ListNavType = {
   id: number;
   name: string;
   link: string;
 };
 
-export const listNavigation: ListNavType[] = [
+export const listNavigationMain: ListNavType[] = [
   {
     id: 1,
     name: "Галерея",
@@ -29,5 +29,23 @@ export const listNavigation: ListNavType[] = [
     id: 5,
     name: "Прайс-лист",
     link: "price",
+  },
+];
+
+export const listNavigationPortfolio: ListNavType[] = [
+  {
+    id: 1,
+    name: "Портфолио",
+    link: "gallery",
+  },
+  {
+    id: 2,
+    name: "Отправить на просчет",
+    link: "calc",
+  },
+  {
+    id: 3,
+    name: "Карта и контакты",
+    link: "contacts",
   },
 ];

@@ -28,6 +28,31 @@ __decorate([
 ], User.prototype, "password", void 0);
 __decorate([
     (0, typeorm_1.Column)({
+        type: 'int',
+        nullable: true,
+        default: null,
+    }),
+    __metadata("design:type", Number)
+], User.prototype, "login_attempts", void 0);
+__decorate([
+    (0, typeorm_1.Column)({
+        name: 'login_time',
+        type: 'timestamp',
+        default: null,
+        nullable: true,
+    }),
+    __metadata("design:type", Date)
+], User.prototype, "login_time", void 0);
+__decorate([
+    (0, typeorm_1.Column)({
+        type: 'boolean',
+        default: false,
+        nullable: false,
+    }),
+    __metadata("design:type", Boolean)
+], User.prototype, "isBlock", void 0);
+__decorate([
+    (0, typeorm_1.Column)({
         name: 'createAt',
         type: 'timestamp',
         default: () => 'CURRENT_TIMESTAMP',

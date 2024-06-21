@@ -2,7 +2,8 @@
 
 import { type FC, useEffect, useState } from "react";
 import Image from "next/image";
-import { Link } from "react-scroll";
+import Link from "next/link";
+import { Link as LinkScroll } from "react-scroll";
 
 import styles from "./header.module.scss";
 
@@ -13,12 +14,15 @@ import Container from "@/components/reused/container/container";
 import logoImg from "../../../../public/img/general/logo-lutapro.webp";
 import Contacts from "@/components/ui/header/contacts/contacts";
 import BurgerMenu from "./burger-menu/burger-menu";
-import { listNavigation } from "@/components/ui/header/list-nav";
+import { ListNavType } from "@/components/ui/header/list-nav";
 import { AnimatePresence } from "framer-motion";
 import useWindowDimensions from "@/hooks/useWindowDimensions";
 import noScroll from "@/services/no-scroll";
 
-const HeaderDynamic: FC = () => {
+type Props = {
+  listMenu: ListNavType[];
+};
+const HeaderDynamic: FC<Props> = ({ listMenu }) => {
   const scrollValue = useScrollScreen();
   const [isShowMenu, setIsShowMenu] = useState<boolean>(false);
   const { width } = useWindowDimensions();
@@ -51,7 +55,7 @@ const HeaderDynamic: FC = () => {
                   <span className={styles.headerDynm_burgerSpan}></span>
                 </button>
               )}
-              <div className={styles.headerDynm_logo}>
+              <Link href={"/"} className={styles.headerDynm_logo}>
                 <Image
                   className={styles.headerDynm_logoImg}
                   src={logoImg}
@@ -59,7 +63,7 @@ const HeaderDynamic: FC = () => {
                   width={323}
                   height={90}
                 />
-              </div>
+              </Link>
               {!isMobile && (
                 <button
                   className={styles.headerDynm_burger}
@@ -73,9 +77,9 @@ const HeaderDynamic: FC = () => {
           )}
           <nav className={styles.headerDynm_nav}>
             <ul className={styles.headerDynm_navList}>
-              {listNavigation.map((item) => (
+              {listMenu.map((item) => (
                 <li className={styles.headerDynm_navItem} key={item.id}>
-                  <Link
+                  <LinkScroll
                     className={styles.headerDynm_navLink}
                     to={item.link}
                     spy={true}
@@ -84,7 +88,7 @@ const HeaderDynamic: FC = () => {
                     duration={500}
                   >
                     {item.name}
-                  </Link>
+                  </LinkScroll>
                 </li>
               ))}
             </ul>
@@ -94,7 +98,9 @@ const HeaderDynamic: FC = () => {
       </Container>
 
       <AnimatePresence>
-        {isShowMenu && <BurgerMenu setIsShow={setIsShowMenu} />}
+        {isShowMenu && (
+          <BurgerMenu listMenu={listMenu} setIsShow={setIsShowMenu} />
+        )}
       </AnimatePresence>
     </div>
   );

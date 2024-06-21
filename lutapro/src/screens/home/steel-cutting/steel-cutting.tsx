@@ -17,7 +17,7 @@ const ModalWindow = dynamic(
 import imageSteelCut from "@/../public/img/steel-cutting/steel-cutting.webp";
 import { SubtitleSectionSmall } from "@/components/reused/common/title-section-small";
 import ButtonRound from "@/components/reused/buttons/button-round";
-import { SteelCuttingList } from "@/screens/home/steel-cutting/steel-cut-list";
+import { SteelCuttingList } from "@/screens/home/steel-cutting/list";
 import { TitleSectionBig } from "@/components/reused/common/title-section-big";
 import { galleryList } from "@/screens/home/gallary/gallery-list";
 import SliderGallery from "@/components/ui/slider-gallery/slider-gallery";
@@ -65,7 +65,11 @@ const SteelCutting: FC = () => {
                 ))}
               </ul>
 
-              <ButtonRound text={"Смотреть портфолио"} onClick={() => ""} />
+              <ButtonRound
+                text={"Смотреть портфолио"}
+                isLink={true}
+                link={"/plazma"}
+              />
             </div>
             <div className={styles.steelCut_wrapImg}>
               <Image

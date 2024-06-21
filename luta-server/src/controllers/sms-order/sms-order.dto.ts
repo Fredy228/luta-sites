@@ -3,4 +3,5 @@ export class SmsOrderDto {
   phone: string;
   email: string;
   message?: string;
+  getPrice?: boolean;
 }

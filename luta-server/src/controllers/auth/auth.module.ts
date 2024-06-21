@@ -27,22 +27,7 @@ export class AuthModule {
       },
     );
 
-    consumer.apply(ProtectAuthMiddleware).forRoutes(
-      {
-        path: '/api/auth/verification',
-        method: RequestMethod.GET,
-      },
-      {
-        path: '/api/auth/verification',
-        method: RequestMethod.POST,
-      },
-    );
-
     consumer.apply(UserAgentMiddleware).forRoutes(
-      {
-        path: '/api/auth/google/callback',
-        method: RequestMethod.GET,
-      },
       {
         path: '/api/auth/register',
         method: RequestMethod.POST,
@@ -50,6 +35,10 @@ export class AuthModule {
       {
         path: '/api/auth/login',
         method: RequestMethod.POST,
+      },
+      {
+        path: '/api/auth/refresh',
+        method: RequestMethod.GET,
       },
     );
   }

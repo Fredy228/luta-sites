@@ -10,12 +10,17 @@ const authProvider = {
       headers: new Headers({ "Content-Type": "application/json" }),
       credentials: "include", // Ensure cookies are included in the request
     });
-
-    console.log("request-auth", request);
     return fetch(request)
       .then((response) => {
+        console.log("response", response);
         if (response.status < 200 || response.status >= 300) {
-          throw new Error(response.statusText);
+          if (response.status === 401)
+            throw new Error("Имя пользователя или пароль неверный.");
+          if (response.status === 423)
+            throw new Error("Пользователь заблокирован.");
+          if (response.status === 425)
+            throw new Error("Слишком много попыток. Попробуйте позже.");
+          throw new Error("Неизвестная ошибка.");
         }
         return response.json();
       })
@@ -28,14 +33,13 @@ const authProvider = {
     return Promise.resolve();
   },
   checkAuth: () => {
-    console.log("Checking auth token");
     return get("token") ? Promise.resolve() : Promise.reject();
   },
   checkError: (error: { status: number; [key: string]: any }) => {
     console.log("Checking error", error);
     if (error?.status === 401) {
       remove("token");
-      return Promise.reject(new Error("You are not authorized"));
+      return Promise.reject("Вы не авторизованы");
     }
     return Promise.resolve();
   },

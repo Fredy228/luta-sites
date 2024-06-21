@@ -80,9 +80,12 @@ export class AuthController {
     },
     @Res({ passthrough: true }) res: Response,
   ) {
+    const userAgent = req['useragent'];
+
     const tokens = await this.authService.refreshToken(
       req.user,
       req.currentDevice,
+      userAgent,
     );
     res.cookie('refreshToken', tokens.refreshToken, {
       httpOnly: true,

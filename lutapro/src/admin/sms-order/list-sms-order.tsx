@@ -1,12 +1,11 @@
 import {
   List,
-  Datagrid,
   TextField,
   ShowButton,
-  DeleteButton,
   FunctionField,
   DateField,
   BooleanField,
+  Datagrid,
 } from "react-admin";
 import TypeFilterSms from "@/admin/sms-order/typeFilter";
 
@@ -14,8 +13,8 @@ const SmsOrderList = (props: any) => {
   return (
     <List
       {...props}
-      title={"Список заявок сайта LutaPro"}
       filters={<TypeFilterSms />}
+      title={"Список заявок сайта LutaPro"}
     >
       <Datagrid>
         <TextField source="id" />
@@ -34,7 +33,7 @@ const SmsOrderList = (props: any) => {
           looseValue={true}
         />
 
-        <ShowButton label={""} />
+        <ShowButton label={""} title={"Показать"} />
       </Datagrid>
     </List>
   );

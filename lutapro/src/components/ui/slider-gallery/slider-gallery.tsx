@@ -9,16 +9,14 @@ import "swiper/scss/navigation";
 import "swiper/scss";
 
 import { IconArrowRight } from "@/components/reused/icon/icon";
+import { GalleryItem } from "@/types/gallery";
+import { MillingType } from "@/screens/home/steel-cutting/list";
 
 SwiperCore.use([Navigation]);
 
 type Props = {
   idx_curr: number;
-  list: Array<{
-    id: number;
-    img: string;
-    [key: string]: any;
-  }>;
+  list: GalleryItem[] | MillingType[];
 };
 const SliderGallery: FC<Props> = ({ idx_curr = 1, list }) => {
   return (
@@ -38,8 +36,12 @@ const SliderGallery: FC<Props> = ({ idx_curr = 1, list }) => {
           <SwiperSlide key={item.id}>
             <div className={styles.gallery_slide}>
               <Image
-                src={item.img}
-                alt={"Портфолио"}
+                src={
+                  "path" in item
+                    ? `${process.env.SERVER_URL}/${item.path}`
+                    : item.img
+                }
+                alt={"title" in item ? item.title : ""}
                 width={1440}
                 height={720}
                 quality={100}

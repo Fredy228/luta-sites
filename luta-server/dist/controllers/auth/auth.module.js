@@ -15,7 +15,6 @@ const auth_service_1 = require("./auth.service");
 const protect_refresh_middleware_1 = require("../../middlewares/protect-refresh.middleware");
 const user_agent_middleware_1 = require("../../middlewares/user-agent.middleware");
 const auth_middleware_service_1 = require("../../services/auth-middleware.service");
-const protect_auth_middleware_1 = require("../../middlewares/protect-auth.middleware");
 let AuthModule = class AuthModule {
     configure(consumer) {
         consumer.apply(protect_refresh_middleware_1.ProtectRefreshMiddleware).forRoutes({
@@ -25,22 +24,15 @@ let AuthModule = class AuthModule {
             path: '/api/auth/logout',
             method: common_1.RequestMethod.GET,
         });
-        consumer.apply(protect_auth_middleware_1.ProtectAuthMiddleware).forRoutes({
-            path: '/api/auth/verification',
-            method: common_1.RequestMethod.GET,
-        }, {
-            path: '/api/auth/verification',
-            method: common_1.RequestMethod.POST,
-        });
         consumer.apply(user_agent_middleware_1.UserAgentMiddleware).forRoutes({
-            path: '/api/auth/google/callback',
-            method: common_1.RequestMethod.GET,
-        }, {
             path: '/api/auth/register',
             method: common_1.RequestMethod.POST,
         }, {
             path: '/api/auth/login',
             method: common_1.RequestMethod.POST,
+        }, {
+            path: '/api/auth/refresh',
+            method: common_1.RequestMethod.GET,
         });
     }
 };

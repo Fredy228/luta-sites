@@ -52,7 +52,8 @@ let AuthController = class AuthController {
         return foundUser;
     }
     async refreshToken(req, res) {
-        const tokens = await this.authService.refreshToken(req.user, req.currentDevice);
+        const userAgent = req['useragent'];
+        const tokens = await this.authService.refreshToken(req.user, req.currentDevice, userAgent);
         res.cookie('refreshToken', tokens.refreshToken, {
             httpOnly: true,
             maxAge: MAX_AGE,

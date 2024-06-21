@@ -37,6 +37,7 @@ export const smsOrderCreateSchema = customJoi
       'string.min': 'message|Сообщение не может быть меньше чем 1 символ',
       'string.max': 'message|Сообщение не может быть больше чем 500 символов',
     }),
+    getPrice: Joi.string().min(1).max(10),
     phone: customJoi.phoneNumber().required(),
   })
   .options({ stripUnknown: true });

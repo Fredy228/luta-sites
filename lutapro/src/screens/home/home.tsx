@@ -20,6 +20,7 @@ import Map from "@/components/ui/map/map";
 import Footer from "@/components/ui/footer/footer";
 import { GalleryItem, GalleryTypeEnum } from "@/types/gallery";
 import { getAllGallery } from "@/services/axios";
+import { listNavigationMain } from "@/components/ui/header/list-nav";
 
 type Props = {
   galleryLastWork: GalleryItem[];
@@ -33,12 +34,16 @@ const Home: NextPage<Props> = ({ galleryLastWork }) => {
           backgroundImage: `linear-gradient(180deg, rgba(0,0,0,0.7) 20%, rgba(0,0,0,0.45) 40%), url(${introBg.src})`,
         }}
       >
-        <Header />
-        <HeaderDynamic />
+        <Header listMenu={listNavigationMain} />
+        <HeaderDynamic listMenu={listNavigationMain} />
         <IntroHome />
       </div>
       <main>
-        <Gallery list={galleryLastWork} />
+        <Gallery
+          text={"Тут Вы можете посмотреть небольшую часть наших работ"}
+          title={"Фотогалерея последних работ"}
+          list={galleryLastWork}
+        />
         <SteelCutting />
         <Milling />
         <NavPortfolio />

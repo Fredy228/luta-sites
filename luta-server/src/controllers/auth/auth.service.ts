@@ -37,15 +37,48 @@ export class AuthService {
     if (!user)
       throw new CustomException(
         HttpStatus.UNAUTHORIZED,
-        `Username or password is wrong`,
+        `Имя пользователя или пароль неверный`,
       );
+    if (user.isBlock)
+      throw new CustomException(423, `Пользователь заблокирован`);
+    const is_time_try =
+      user.login_time &&
+      new Date().getTime() - new Date(user.login_time).getTime() < 3600 * 1000;
+    if (is_time_try) {
+      const time_try = new Date().getTime() - user.login_time.getTime();
+      throw new CustomException(
+        425,
+        `Повторите попытку через ${Math.round(time_try / 1000 / 60)} минут`,
+      );
+    }
+
     const isValidPass = await checkPassword(password, user.password);
 
-    if (!isValidPass)
+    if (!isValidPass) {
+      if (user.login_attempts === 5 || user.login_attempts === 10) {
+        await this.usersRepository.update(user.id, {
+          login_time: new Date(),
+        });
+      }
+      if (user.login_attempts > 14) {
+        await this.usersRepository.update(user.id, {
+          isBlock: true,
+        });
+      }
+      await this.usersRepository.update(user.id, {
+        login_attempts: user.login_attempts ? user.login_attempts + 1 : 1,
+      });
+
       throw new CustomException(
         HttpStatus.UNAUTHORIZED,
-        `Username or password is wrong`,
+        `Имя пользователя или пароль неверный`,
       );
+    }
+
+    await this.usersRepository.update(user.id, {
+      login_attempts: 0,
+      login_time: null,
+    });
 
     const deviceModel = `${userAgent.platform} ${userAgent.os} ${userAgent.browser}`;
 
@@ -86,7 +119,16 @@ export class AuthService {
   async refreshToken(
     user: User,
     currentDevice: UserDevices,
+    userAgent: Details,
   ): Promise<TokenType> {
+    const deviceModel = `${userAgent?.platform} ${userAgent?.os} ${userAgent?.browser}`;
+
+    if (deviceModel !== currentDevice.deviceModel)
+      throw new CustomException(
+        HttpStatus.UNAUTHORIZED,
+        `Login from an untrusted device`,
+      );
+
     const newTokens = this.createToken(user);
 
     await this.devicesRepository.update(currentDevice, {

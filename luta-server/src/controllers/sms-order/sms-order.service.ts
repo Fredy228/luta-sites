@@ -1,6 +1,6 @@
 import { HttpStatus, Injectable } from '@nestjs/common';
 import { v4 as uuidv4 } from 'uuid';
-import { writeFile } from 'fs-extra';
+import { writeFile, pathExists } from 'fs-extra';
 import * as path from 'path';
 
 import { SmsOrder } from '../../entity/sms-order.entity';
@@ -12,6 +12,7 @@ import { FileType } from '../../types/sms_message.type';
 import { QueryGetAllType } from '../../types/query';
 import { CustomException } from '../../services/custom-exception';
 import { ImageService } from '../../services/image.service';
+import { MailService } from '../mail/mail.service';
 
 @Injectable()
 export class SmsOrderService {
@@ -20,6 +21,7 @@ export class SmsOrderService {
     private readonly smsOrderRepository: Repository<SmsOrder>,
     private readonly imageService: ImageService,
     private readonly entityManager: EntityManager,
+    private readonly mailService: MailService,
   ) {}
 
   async create(
@@ -29,6 +31,10 @@ export class SmsOrderService {
   ): Promise<void> {
     let file: FileType | undefined = undefined;
     if (fileUploaded) {
+      fileUploaded.originalname = Buffer.from(
+        fileUploaded.originalname,
+        'latin1',
+      ).toString('utf8');
       const fileName = fileUploaded.originalname.split('.')[0];
       const filePath = `client-files/${fileName}-${uuidv4()}${path.extname(fileUploaded.originalname)}`;
 
@@ -51,6 +57,22 @@ export class SmsOrderService {
     });
 
     await this.smsOrderRepository.save(newSmsOrder);
+
+    const price_list_path = `${process.cwd()}/static/price-list/price-list.pdf`;
+    if (Boolean(body.getPrice) && (await pathExists(price_list_path))) {
+      await this.mailService.sendPriceList(
+        body.email,
+        'Прайс лист LutaPro',
+        'Добрый день. \n \nВас приветствует компания "ЛЮТАПРО", г. Одесса.' +
+          '\n \nВо вложении Вы увидите прайс-лист.' +
+          '\n \nТак же на сайте вы можете ознакомиться с примерами наших работ.' +
+          '\n \nС уважением, Игорь Викторович, компания "ЛЮТАПРО"',
+        {
+          filename: 'price-list.pdf',
+          path: price_list_path,
+        },
+      );
+    }
   }
 
   async getAll({ range, filter, sort }: QueryGetAllType, site: SiteEnum) {

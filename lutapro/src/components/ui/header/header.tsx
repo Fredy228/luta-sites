@@ -4,6 +4,8 @@ import { type FC, useEffect, useState } from "react";
 import Image from "next/image";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
+import { AnimatePresence } from "framer-motion";
+import Link from "next/link";
 import { animateScroll } from "react-scroll";
 
 import styles from "./header.module.scss";
@@ -12,12 +14,15 @@ import Container from "@/components/reused/container/container";
 import Contacts from "@/components/ui/header/contacts/contacts";
 
 import logoImg from "@/../public/img/general/logo-lutapro.webp";
-import { AnimatePresence } from "framer-motion";
 import BurgerMenu from "@/components/ui/header/burger-menu/burger-menu";
 import noScroll from "@/services/no-scroll";
 import useScrollScreen from "@/hooks/scrollScreen";
+import { ListNavType } from "@/components/ui/header/list-nav";
 
-const Header: FC = () => {
+type Props = {
+  listMenu: ListNavType[];
+};
+const Header: FC<Props> = ({ listMenu }) => {
   const [isShowMenu, setIsShowMenu] = useState<boolean>(false);
   const scrollValue = useScrollScreen();
 
@@ -42,7 +47,7 @@ const Header: FC = () => {
             <span className={styles.headerDynm_burgerSpan}></span>
           </button>
 
-          <div className={styles.header_logo}>
+          <Link href={"/"} className={styles.header_logo}>
             <Image
               className={styles.header_logoImg}
               src={logoImg}
@@ -50,7 +55,7 @@ const Header: FC = () => {
               width={323}
               height={90}
             />
-          </div>
+          </Link>
           <div className={styles.header_contacts}>
             <Contacts />
           </div>
@@ -58,7 +63,9 @@ const Header: FC = () => {
       </Container>
 
       <AnimatePresence>
-        {isShowMenu && <BurgerMenu setIsShow={setIsShowMenu} />}
+        {isShowMenu && (
+          <BurgerMenu listMenu={listMenu} setIsShow={setIsShowMenu} />
+        )}
       </AnimatePresence>
 
       {scrollValue > 300 && (

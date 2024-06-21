@@ -7,9 +7,10 @@ import { ProtectAuthMiddleware } from '../../middlewares/protect-auth.middleware
 import { SmsOrder } from '../../entity/sms-order.entity';
 import { AuthMiddlewareService } from '../../services/auth-middleware.service';
 import { ImageService } from '../../services/image.service';
+import { MailModule } from '../mail/mail.module';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([SmsOrder, User])],
+  imports: [TypeOrmModule.forFeature([SmsOrder, User]), MailModule],
   controllers: [SmsOrderController],
   providers: [SmsOrderService, AuthMiddlewareService, ImageService],
 })

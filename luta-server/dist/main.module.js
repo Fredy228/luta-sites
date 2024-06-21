@@ -16,6 +16,7 @@ const typeorm_1 = require("@nestjs/typeorm");
 const auth_module_1 = require("./controllers/auth/auth.module");
 const gallery_module_1 = require("./controllers/gallery/gallery.module");
 const sms_order_module_1 = require("./controllers/sms-order/sms-order.module");
+const mailer_1 = require("@nestjs-modules/mailer");
 dotenv.config();
 let MainModule = class MainModule {
 };
@@ -29,10 +30,26 @@ exports.MainModule = MainModule = __decorate([
                 secret: process.env.JWT_SECRET,
                 signOptions: { expiresIn: '7d' },
             }),
+            mailer_1.MailerModule.forRoot({
+                transport: {
+                    host: process.env.SMTP_DOMAIN,
+                    port: Number(process.env.SMTP_PORT),
+                    secure: true,
+                    auth: {
+                        user: process.env.SMTP_USER,
+                        pass: process.env.SMTP_PASS,
+                    },
+                    tls: {
+                        rejectUnauthorized: false,
+                    },
+                },
+            }),
             auth_module_1.AuthModule,
             gallery_module_1.GalleryModule,
             sms_order_module_1.SmsOrderModule,
         ],
+        controllers: [],
+        providers: [],
     })
 ], MainModule);
 //# sourceMappingURL=main.module.js.map

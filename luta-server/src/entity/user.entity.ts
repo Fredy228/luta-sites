@@ -20,6 +20,28 @@ export class User {
   password: string;
 
   @Column({
+    type: 'int',
+    nullable: true,
+    default: null,
+  })
+  login_attempts: number;
+
+  @Column({
+    name: 'login_time',
+    type: 'timestamp',
+    default: null,
+    nullable: true,
+  })
+  login_time: Date;
+
+  @Column({
+    type: 'boolean',
+    default: false,
+    nullable: false,
+  })
+  isBlock: boolean;
+
+  @Column({
     name: 'createAt',
     type: 'timestamp',
     default: () => 'CURRENT_TIMESTAMP',

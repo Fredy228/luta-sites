@@ -4,6 +4,7 @@ import { type FC } from "react";
 import CircularProgress from "@mui/material/CircularProgress";
 
 import styles from "./buttons.module.scss";
+import Link from "next/link";
 
 type Props = {
   type?: "button" | "submit";
@@ -12,6 +13,8 @@ type Props = {
   version?: "color" | "grey";
   style?: Record<string, string>;
   isLoading?: boolean;
+  isLink?: boolean;
+  link?: string;
 };
 const ButtonRound: FC<Props> = ({
   type = "button",
@@ -20,7 +23,20 @@ const ButtonRound: FC<Props> = ({
   version = "color",
   style = {},
   isLoading = false,
+  isLink = false,
+  link,
 }) => {
+  if (isLink && link)
+    return (
+      <Link
+        style={style}
+        className={`${styles.btn_round} ${version === "color" ? styles.color : styles.grey}`}
+        href={link}
+      >
+        {text}
+      </Link>
+    );
+
   return (
     <button
       type={type}
@@ -28,7 +44,7 @@ const ButtonRound: FC<Props> = ({
       className={`${styles.btn_round} ${version === "color" ? styles.color : styles.grey}`}
       onClick={onClick}
     >
-      {isLoading ? <CircularProgress /> : text}
+      {isLoading ? <CircularProgress size={18} color={"info"} /> : text}
     </button>
   );
 };

@@ -61,7 +61,7 @@ type Props = {
   text: string;
   tag: string;
 };
-const SendForm: FC<Props> = ({ setOptions, title, text }) => {
+const SendForm: FC<Props> = ({ setOptions, title, text, tag }) => {
   const [file, setFile] = useState<null | File>(null);
   const [email, setEmail] = useState<string>("");
   const [name, setName] = useState<string>("");
@@ -85,8 +85,9 @@ const SendForm: FC<Props> = ({ setOptions, title, text }) => {
         email: email.trim(),
         name: name.trim(),
         phone: phone.trim(),
-        message: message.trim().length === 0 ? undefined : message,
+        message: message.trim().length === 0 ? tag : message,
         file: file || undefined,
+        getPrice: tag === "#Получить прайс-лист",
       });
 
       setFile(null);

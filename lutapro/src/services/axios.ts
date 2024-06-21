@@ -9,7 +9,7 @@ export const getAllGallery = async (
   type: GalleryTypeEnum,
 ): Promise<GalleryItem[]> => {
   const params = new URLSearchParams({
-    filter: JSON.stringify({ type: GalleryTypeEnum.LAST_WORKS }),
+    filter: JSON.stringify({ type }),
   });
 
   console.log("fetch", `${baseURL}/api/gallery-luta?${String(params)}`);
@@ -29,10 +29,12 @@ export const sendSmsOrder = async (body: {
   name: string;
   message?: string;
   email: string;
+  getPrice?: boolean;
 }) => {
   const formData = new FormData();
   if (body.file) formData.append("file", body.file);
   if (body.message) formData.append("message", body.message);
+  if (body.getPrice) formData.append("getPrice", String(body.getPrice));
   formData.append("phone", body.phone);
   formData.append("name", body.name);
   formData.append("email", body.email);

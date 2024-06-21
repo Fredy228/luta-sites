@@ -27,16 +27,24 @@ import { GalleryItem } from "@/types/gallery";
 
 type Props = {
   list?: GalleryItem[];
+  colorTitle?: "dark" | "light";
+  title: string;
+  text?: string;
 };
-const Gallery: FC<Props> = ({ list = [] }) => {
+const Gallery: FC<Props> = ({
+  list = [],
+  colorTitle = "dark",
+  text,
+  title,
+}) => {
   const [isShowModal, setIsShowModal] = useState<boolean>(false);
   const [idxCurrPhoto, setIdxCurrPhoto] = useState<number>(1);
 
   const { width } = useWindowDimensions();
 
-  const handleOpenPhoto = (id: number) => {
-    const idx = galleryList.findIndex((i) => i.id === id);
-    setIdxCurrPhoto(idx);
+  const handleOpenPhoto = async (id: number) => {
+    const idx = list.findIndex((i) => i.id === id);
+    await setIdxCurrPhoto(idx);
     setIsShowModal(true);
   };
 
@@ -51,10 +59,8 @@ const Gallery: FC<Props> = ({ list = [] }) => {
       <section className={styles.gallery}>
         <Container>
           <div className={styles.gallery_inner}>
-            <TitleSectionBig text={"Фотогалерея последних работ"} />
-            <SubtitleSectionBig
-              text={"Тут Вы можете посмотреть небольшую часть наших работ"}
-            />
+            <TitleSectionBig colorText={colorTitle} text={title} />
+            {text && <SubtitleSectionBig colorText={colorTitle} text={text} />}
 
             <ImageList
               style={{ marginTop: "30px" }}
@@ -78,7 +84,7 @@ const Gallery: FC<Props> = ({ list = [] }) => {
 
             {isShowModal && (
               <ModalWindow setShow={setIsShowModal} scrollPage={true}>
-                <SliderGallery idx_curr={idxCurrPhoto} list={galleryList} />
+                <SliderGallery idx_curr={idxCurrPhoto} list={list} />
               </ModalWindow>
             )}
           </div>

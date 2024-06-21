@@ -12,6 +12,9 @@ const theme = createTheme({
       main: "#1a8fe9",
       dark: "#1578c2",
     },
+    info: {
+      main: "#fff",
+    },
     // warning: {
     //   main: "#ff754c",
     // },

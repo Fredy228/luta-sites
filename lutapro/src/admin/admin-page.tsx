@@ -5,6 +5,7 @@ import dynamic from "next/dynamic";
 import { Admin as AdminComponent, Resource } from "react-admin";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { Layout } from "react-admin";
+import CollectionsIcon from "@mui/icons-material/Collections";
 
 import dataProvider from "./dataProvider";
 import authProvider from "@/admin/authProvider";
@@ -49,6 +50,7 @@ const Admin: FC = () => {
         create={GalleryCreate}
         edit={GalleryEdit}
         show={GalleryShow}
+        icon={CollectionsIcon}
         options={{
           label: "Галерея LutaPro",
         }}
