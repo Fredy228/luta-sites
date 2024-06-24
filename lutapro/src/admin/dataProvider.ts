@@ -2,7 +2,7 @@ import { CreateParams, DataProvider, fetchUtils } from "react-admin";
 import simpleRestProvider from "ra-data-simple-rest";
 import { get, set, remove } from "local-storage";
 
-const apiUrl = "http://localhost:3333/api";
+const apiUrl = `${process.env.SERVER_URL}/api`;
 
 const httpClient = async (url: string, options: Record<string, any> = {}) => {
   const token = get("token");
