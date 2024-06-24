@@ -1,6 +1,6 @@
 import { get, set, remove } from "local-storage";
 
-const apiUrl = "http://localhost:3333/api";
+const apiUrl = process.env.SERVER_URL;
 
 const authProvider = {
   login: ({ username, password }: { username: string; password: string }) => {

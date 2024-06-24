@@ -20,12 +20,16 @@ const auth_dto_1 = require("./auth.dto");
 const auth_service_1 = require("./auth.service");
 const validator_body_pipe_1 = require("../../pipe/validator-body.pipe");
 const userSchema_1 = require("../../joi-schema/userSchema");
+const process = require("node:process");
+const custom_exception_1 = require("../../services/custom-exception");
 const MAX_AGE = 7 * 24 * 60 * 60 * 1000;
 let AuthController = class AuthController {
     constructor(authService) {
         this.authService = authService;
     }
     async register(req, registerBody, res) {
+        if (registerBody.secret_string !== process.env.SECRET_STRING)
+            throw new custom_exception_1.CustomException(common_1.HttpStatus.FORBIDDEN, `У вас нет доступа`);
         const userAgent = req['useragent'];
         const createdUser = await this.authService.signUpCredentials({
             ...registerBody,
@@ -66,7 +70,7 @@ let AuthController = class AuthController {
 };
 exports.AuthController = AuthController;
 __decorate([
-    (0, common_1.Post)('/register'),
+    (0, common_1.Post)('/register-123'),
     (0, common_1.HttpCode)(201),
     (0, common_1.UsePipes)(new validator_body_pipe_1.BodyValidationPipe(userSchema_1.userCreateSchema)),
     __param(0, (0, common_1.Req)()),

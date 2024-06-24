@@ -15,6 +15,7 @@ const auth_service_1 = require("./auth.service");
 const protect_refresh_middleware_1 = require("../../middlewares/protect-refresh.middleware");
 const user_agent_middleware_1 = require("../../middlewares/user-agent.middleware");
 const auth_middleware_service_1 = require("../../services/auth-middleware.service");
+const mail_module_1 = require("../mail/mail.module");
 let AuthModule = class AuthModule {
     configure(consumer) {
         consumer.apply(protect_refresh_middleware_1.ProtectRefreshMiddleware).forRoutes({
@@ -39,7 +40,7 @@ let AuthModule = class AuthModule {
 exports.AuthModule = AuthModule;
 exports.AuthModule = AuthModule = __decorate([
     (0, common_1.Module)({
-        imports: [typeorm_1.TypeOrmModule.forFeature([user_entity_1.User, user_entity_1.UserDevices])],
+        imports: [typeorm_1.TypeOrmModule.forFeature([user_entity_1.User, user_entity_1.UserDevices]), mail_module_1.MailModule],
         controllers: [auth_controller_1.AuthController],
         providers: [auth_service_1.AuthService, auth_middleware_service_1.AuthMiddlewareService],
     })

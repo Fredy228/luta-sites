@@ -6,6 +6,7 @@ import Image from "next/image";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import { Element } from "react-scroll";
+import { styled } from "@mui/system";
 
 import styles from "./gallery.module.scss";
 
@@ -48,12 +49,6 @@ const Gallery: FC<Props> = ({
     setIsShowModal(true);
   };
 
-  const calcColumImageList = (): number => {
-    if (width < 768) return 3;
-    if (width < 1024) return 4;
-    return 5;
-  };
-
   return (
     <Element name={"gallery"}>
       <section className={styles.gallery}>
@@ -61,15 +56,9 @@ const Gallery: FC<Props> = ({
           <div className={styles.gallery_inner}>
             <TitleSectionBig colorText={colorTitle} text={title} />
             {text && <SubtitleSectionBig colorText={colorTitle} text={text} />}
-
-            <ImageList
-              style={{ marginTop: "30px" }}
-              variant="masonry"
-              cols={calcColumImageList()}
-              gap={8}
-            >
+            <ul className={styles.gallery_list}>
               {list.map((item) => (
-                <ImageListItem key={item.id}>
+                <li className={styles.gallery_item} key={item.id}>
                   <Image
                     className={styles.gallery_img}
                     src={`${process.env.SERVER_URL}/${item.path}`}
@@ -78,9 +67,9 @@ const Gallery: FC<Props> = ({
                     height={500}
                     onClick={() => handleOpenPhoto(item.id)}
                   />
-                </ImageListItem>
+                </li>
               ))}
-            </ImageList>
+            </ul>
 
             {isShowModal && (
               <ModalWindow setShow={setIsShowModal} scrollPage={true}>

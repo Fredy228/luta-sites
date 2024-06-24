@@ -7,10 +7,10 @@ import { AuthService } from './auth.service';
 import { ProtectRefreshMiddleware } from '../../middlewares/protect-refresh.middleware';
 import { UserAgentMiddleware } from '../../middlewares/user-agent.middleware';
 import { AuthMiddlewareService } from '../../services/auth-middleware.service';
-import { ProtectAuthMiddleware } from '../../middlewares/protect-auth.middleware';
+import { MailModule } from '../mail/mail.module';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([User, UserDevices])],
+  imports: [TypeOrmModule.forFeature([User, UserDevices]), MailModule],
   controllers: [AuthController],
   providers: [AuthService, AuthMiddlewareService],
 })

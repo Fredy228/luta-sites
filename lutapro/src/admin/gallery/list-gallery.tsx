@@ -13,7 +13,6 @@ import TypeFilter from "./typeFilter";
 
 const GalleryList = (props: any) => {
   const serverUrl = process.env.SERVER_URL;
-  console.log("serverUrl", serverUrl);
   return (
     <List
       {...props}

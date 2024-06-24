@@ -3,6 +3,7 @@ import {
   Controller,
   Get,
   HttpCode,
+  HttpStatus,
   Post,
   Req,
   Res,
@@ -19,6 +20,8 @@ import { AuthService } from './auth.service';
 import { BodyValidationPipe } from '../../pipe/validator-body.pipe';
 import { userCreateSchema } from '../../joi-schema/userSchema';
 import { User, UserDevices } from '../../entity/user.entity';
+import * as process from 'node:process';
+import { CustomException } from '../../services/custom-exception';
 
 // const CLIENT_URL = process.env.CLIENT_URL;
 const MAX_AGE = 7 * 24 * 60 * 60 * 1000;
@@ -27,7 +30,7 @@ const MAX_AGE = 7 * 24 * 60 * 60 * 1000;
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
-  @Post('/register')
+  @Post('/register-123')
   @HttpCode(201)
   @UsePipes(new BodyValidationPipe(userCreateSchema))
   async register(
@@ -36,6 +39,9 @@ export class AuthController {
     @Body() registerBody: RegisterAuthDto,
     @Res({ passthrough: true }) res: Response,
   ) {
+    if (registerBody?.secret_string !== process.env.SECRET_STRING)
+      throw new CustomException(HttpStatus.FORBIDDEN, `У вас нет доступа`);
+
     const userAgent = req['useragent'];
     const createdUser = await this.authService.signUpCredentials({
       ...registerBody,

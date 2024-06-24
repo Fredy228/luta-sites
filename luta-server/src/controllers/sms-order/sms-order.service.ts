@@ -73,6 +73,8 @@ export class SmsOrderService {
         },
       );
     }
+
+    await this.mailService.noticeOrder(newSmsOrder, 'LutaPro');
   }
 
   async getAll({ range, filter, sort }: QueryGetAllType, site: SiteEnum) {

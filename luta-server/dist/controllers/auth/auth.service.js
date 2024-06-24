@@ -20,14 +20,17 @@ const jwt_1 = require("@nestjs/jwt");
 const user_entity_1 = require("../../entity/user.entity");
 const custom_exception_1 = require("../../services/custom-exception");
 const hashPassword_1 = require("../../services/hashPassword");
+const mail_service_1 = require("../mail/mail.service");
 let AuthService = class AuthService {
-    constructor(usersRepository, devicesRepository, jwtService, entityManager) {
+    constructor(usersRepository, devicesRepository, jwtService, entityManager, mailService) {
         this.usersRepository = usersRepository;
         this.devicesRepository = devicesRepository;
         this.jwtService = jwtService;
         this.entityManager = entityManager;
+        this.mailService = mailService;
     }
     async signInCredentials({ username, password, userAgent, }) {
+        const deviceModel = `${userAgent.platform} ${userAgent.os} ${userAgent.browser}`;
         const user = await this.usersRepository.findOne({
             where: { username },
             relations: {
@@ -50,11 +53,18 @@ let AuthService = class AuthService {
                 await this.usersRepository.update(user.id, {
                     login_time: new Date(),
                 });
+                await this.mailService.noticeInfo(`Кто-то пытается войти как ${username}.` +
+                    ` \n Использовано ${user.login_attempts} попыток.` +
+                    ` \n Источник входа: ${deviceModel}`);
             }
             if (user.login_attempts > 14) {
                 await this.usersRepository.update(user.id, {
                     isBlock: true,
                 });
+                await this.mailService.noticeInfo(`Кто-то пытается войти как ${username}.` +
+                    ` \n Использовано ${user.login_attempts} попыток.` +
+                    ` \n Источник входа: ${deviceModel}` +
+                    ` \n ${username} был заблокирован для безопасности`);
             }
             await this.usersRepository.update(user.id, {
                 login_attempts: user.login_attempts ? user.login_attempts + 1 : 1,
@@ -65,7 +75,6 @@ let AuthService = class AuthService {
             login_attempts: 0,
             login_time: null,
         });
-        const deviceModel = `${userAgent.platform} ${userAgent.os} ${userAgent.browser}`;
         await this.deleteOldSession(user.devices);
         const tokens = await this.addDeviceAuth(deviceModel, user);
         return { ...user, ...tokens, password: null };
@@ -135,6 +144,7 @@ exports.AuthService = AuthService = __decorate([
     __metadata("design:paramtypes", [typeorm_2.Repository,
         typeorm_2.Repository,
         jwt_1.JwtService,
-        typeorm_2.EntityManager])
+        typeorm_2.EntityManager,
+        mail_service_1.MailService])
 ], AuthService);
 //# sourceMappingURL=auth.service.js.map

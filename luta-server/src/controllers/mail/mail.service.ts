@@ -40,4 +40,27 @@ export class MailService {
       ],
     });
   }
+
+  async noticeOrder(smsOrder: SmsOrder, site: string) {
+    const arrStr = Object.keys(smsOrder)
+      .map((key) => {
+        return `${key}: ${smsOrder[key]}`;
+      })
+      .join(' \n');
+    await this.mailerService.sendMail({
+      from: process.env.SMTP_USER,
+      to: process.env.NOTICE_EMAIL,
+      subject: `Новая заявка ${site}`,
+      text: arrStr,
+    });
+  }
+
+  async noticeInfo(message: string) {
+    await this.mailerService.sendMail({
+      from: process.env.SMTP_USER,
+      to: process.env.NOTICE_EMAIL,
+      subject: `Уведомление`,
+      text: message,
+    });
+  }
 }

@@ -9,6 +9,7 @@ import { LoginAuthDto, RegisterAuthDto } from './auth.dto';
 import { TokenType } from '../../types/token-type';
 import { CustomException } from '../../services/custom-exception';
 import { checkPassword, hashPassword } from '../../services/hashPassword';
+import { MailService } from '../mail/mail.service';
 
 @Injectable()
 export class AuthService {
@@ -20,6 +21,7 @@ export class AuthService {
     private devicesRepository: Repository<UserDevices>,
     private jwtService: JwtService,
     private readonly entityManager: EntityManager,
+    private readonly mailService: MailService,
   ) {}
 
   async signInCredentials({
@@ -27,6 +29,8 @@ export class AuthService {
     password,
     userAgent,
   }: LoginAuthDto & { userAgent: Details }): Promise<User & TokenType> {
+    const deviceModel = `${userAgent.platform} ${userAgent.os} ${userAgent.browser}`;
+
     const user = await this.usersRepository.findOne({
       where: { username },
       relations: {
@@ -59,11 +63,23 @@ export class AuthService {
         await this.usersRepository.update(user.id, {
           login_time: new Date(),
         });
+        await this.mailService.noticeInfo(
+          `Кто-то пытается войти как ${username}.` +
+            ` \n Использовано ${user.login_attempts} попыток.` +
+            ` \n Источник входа: ${deviceModel}`,
+        );
       }
       if (user.login_attempts > 14) {
         await this.usersRepository.update(user.id, {
           isBlock: true,
         });
+
+        await this.mailService.noticeInfo(
+          `Кто-то пытается войти как ${username}.` +
+            ` \n Использовано ${user.login_attempts} попыток.` +
+            ` \n Источник входа: ${deviceModel}` +
+            ` \n ${username} был заблокирован для безопасности`,
+        );
       }
       await this.usersRepository.update(user.id, {
         login_attempts: user.login_attempts ? user.login_attempts + 1 : 1,
@@ -79,8 +95,6 @@ export class AuthService {
       login_attempts: 0,
       login_time: null,
     });
-
-    const deviceModel = `${userAgent.platform} ${userAgent.os} ${userAgent.browser}`;
 
     await this.deleteOldSession(user.devices);
 

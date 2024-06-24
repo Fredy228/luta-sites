@@ -4,12 +4,14 @@ import { Details } from 'express-useragent';
 import { User, UserDevices } from '../../entity/user.entity';
 import { LoginAuthDto, RegisterAuthDto } from './auth.dto';
 import { TokenType } from '../../types/token-type';
+import { MailService } from '../mail/mail.service';
 export declare class AuthService {
     private usersRepository;
     private devicesRepository;
     private jwtService;
     private readonly entityManager;
-    constructor(usersRepository: Repository<User>, devicesRepository: Repository<UserDevices>, jwtService: JwtService, entityManager: EntityManager);
+    private readonly mailService;
+    constructor(usersRepository: Repository<User>, devicesRepository: Repository<UserDevices>, jwtService: JwtService, entityManager: EntityManager, mailService: MailService);
     signInCredentials({ username, password, userAgent, }: LoginAuthDto & {
         userAgent: Details;
     }): Promise<User & TokenType>;

@@ -5,4 +5,5 @@ export declare abstract class BaseAuthDto {
 export declare class LoginAuthDto extends BaseAuthDto {
 }
 export declare class RegisterAuthDto extends BaseAuthDto {
+    secret_string: string;
 }
