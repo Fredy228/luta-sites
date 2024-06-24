@@ -28,7 +28,7 @@ let AuthController = class AuthController {
         this.authService = authService;
     }
     async register(req, registerBody, res) {
-        if (registerBody.secret_string !== process.env.SECRET_STRING)
+        if (registerBody?.secret_string !== process.env.SECRET_STRING)
             throw new custom_exception_1.CustomException(common_1.HttpStatus.FORBIDDEN, `У вас нет доступа`);
         const userAgent = req['useragent'];
         const createdUser = await this.authService.signUpCredentials({
