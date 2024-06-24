@@ -136,7 +136,8 @@ export class SmsOrderService {
 
       await entityManager.delete(SmsOrder, id);
 
-      await this.imageService.deleteImages([smsOrder.file.path_to_file]);
+      if (smsOrder.file && smsOrder.file.path_to_file)
+        await this.imageService.deleteImages([smsOrder.file.path_to_file]);
 
       return smsOrder;
     });
