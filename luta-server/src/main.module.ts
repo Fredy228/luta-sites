@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import * as process from 'process';
 import * as dotenv from 'dotenv';
 import { JwtModule } from '@nestjs/jwt';
-import databaseConfig from './config/database.config';
+import databaseConfig from '../data-source';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './controllers/auth/auth.module';
 import { GalleryModule } from './controllers/gallery/gallery.module';
@@ -13,7 +13,7 @@ dotenv.config();
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot(databaseConfig),
+    TypeOrmModule.forRoot(databaseConfig.options),
     JwtModule.register({
       global: true,
       secret: process.env.JWT_SECRET,

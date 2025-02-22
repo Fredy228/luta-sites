@@ -29,7 +29,7 @@ export class AuthModule {
 
     consumer.apply(UserAgentMiddleware).forRoutes(
       {
-        path: '/api/auth/register',
+        path: '/api/auth/register-123',
         method: RequestMethod.POST,
       },
       {
