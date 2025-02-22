@@ -62,13 +62,11 @@ export class AuthController {
     @Body() loginBody: LoginAuthDto,
     @Res({ passthrough: true }) res: Response,
   ) {
-    console.log('loginBody', loginBody);
     const userAgent = req['useragent'];
     const foundUser = await this.authService.signInCredentials({
       ...loginBody,
       userAgent,
     });
-    console.log('toooken', foundUser.refreshToken);
     res.cookie('refreshToken', foundUser.refreshToken, {
       httpOnly: true,
       maxAge: MAX_AGE,

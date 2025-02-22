@@ -62,7 +62,6 @@ export class GalleryController {
     @Res() res: Response,
   ) {
     const { range, filter, sort } = parseQueryGetAll(query);
-    console.log('query', query);
 
     const galleries = await this.galleryService.getAll(
       { range, filter, sort },

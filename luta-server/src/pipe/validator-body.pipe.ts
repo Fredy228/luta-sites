@@ -16,10 +16,8 @@ export class BodyValidationPipe implements PipeTransform {
     if (metadata.type !== 'body') {
       return value;
     }
-    console.log(value);
 
     const { error } = this.schema.validate(value);
-    console.log(error);
     if (error) {
       throw new CustomException(HttpStatus.BAD_REQUEST, error.message);
     }

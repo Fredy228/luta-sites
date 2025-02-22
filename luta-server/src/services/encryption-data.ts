@@ -16,7 +16,6 @@ export const encryptionData = (dataToEncrypt: string): string | null => {
     encryptedData += cipher.final('hex');
     return iv.toString('hex') + encryptedData;
   } catch (e) {
-    console.log('e-encrypt', e);
     return null;
   }
 };
@@ -34,7 +33,6 @@ export const decryptionData = (encryptedData: string): string | null => {
     decryptedData += decipher.final('utf-8');
     return decryptedData;
   } catch (e) {
-    console.log('e-decrypt', e);
     return null;
   }
 };

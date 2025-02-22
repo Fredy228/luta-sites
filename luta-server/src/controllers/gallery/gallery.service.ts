@@ -113,10 +113,8 @@ export class GalleryService {
     body: Partial<GalleryDto>,
     photo: Express.Multer.File | null,
   ): Promise<Gallery> {
-    console.log('body', body);
     return this.entityManager.transaction(async (entityManager) => {
       const gallery = await this.getOne(id);
-      console.log('gallery', gallery);
 
       const old_path_photo = gallery.path;
 
@@ -134,11 +132,7 @@ export class GalleryService {
 
       await entityManager.save(Gallery, gallery);
 
-      console.log('complete update');
-
       if (photo) await this.imageService.deleteImages([old_path_photo]);
-
-      console.log('updated-gallery', gallery);
 
       return gallery;
     });

@@ -14,7 +14,6 @@ export class FileValidatorPipe implements PipeTransform {
   constructor(private options: { maxSize: number; nullable: boolean }) {}
 
   transform(files: TFileImg, { type }: ArgumentMetadata) {
-    console.log(`arguments-${type}`, files);
     if (['query', 'body', 'param'].includes(type)) {
       return files;
     }

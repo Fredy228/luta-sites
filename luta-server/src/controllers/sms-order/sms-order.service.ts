@@ -89,8 +89,6 @@ export class SmsOrderService {
     // if (filter.file) filterOption.file = Like('%' + filter.file + '%');
     if (filter.createAt) filterOption.createAt = filter.createAt;
 
-    console.log(filterOption);
-
     const rangeOption: { [key: string]: any } = {};
     if (range && range.length === 2) {
       rangeOption.take = range[1] - range[0] + 1;

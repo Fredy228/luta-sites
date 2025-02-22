@@ -25,8 +25,6 @@ export class ProtectRefreshMiddleware implements NestMiddleware {
   ) {
     const token = req.cookies.refreshToken;
 
-    console.log('refreshToken', token);
-
     if (!token)
       throw new CustomException(HttpStatus.UNAUTHORIZED, 'Not authorized');
 
