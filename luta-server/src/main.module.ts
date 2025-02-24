@@ -27,7 +27,7 @@ dotenv.config();
       transport: {
         host: process.env.SMTP_DOMAIN,
         port: Number(process.env.SMTP_PORT),
-        secure: true,
+        secure: Boolean(Number(process.env.SMTP_SECURE)),
         auth: {
           user: process.env.SMTP_USER,
           pass: process.env.SMTP_PASS,
