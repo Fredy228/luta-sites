@@ -11,7 +11,7 @@ const nextConfig = {
             },
             {
                 protocol: "https",
-                hostname: "fredytest.kyiv.ua",
+                hostname: "rezba.com.ua",
             }
         ],
     },
