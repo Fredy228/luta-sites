@@ -17,7 +17,7 @@ export class GalleryModule {
   configure(consumer: MiddlewareConsumer) {
     consumer.apply(ProtectAuthMiddleware).forRoutes(
       {
-        path: 'api/gallery-luta',
+        path: 'api/gallery-luta/:site',
         method: RequestMethod.POST,
       },
       {

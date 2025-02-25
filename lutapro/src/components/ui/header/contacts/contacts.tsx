@@ -75,9 +75,9 @@ const ContactsHeader: FC = () => {
               <li className={styles.contactsList_item}>
                 <a
                   className={styles.contactsList_link}
-                  href="tel:+380487022575"
+                  href="tel:+380677885157"
                 >
-                  +38 048 702 25 75
+                  +38 067 78 85 157
                 </a>
                 <p className={styles.contactsList_text}>офис</p>
               </li>

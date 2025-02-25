@@ -1,4 +1,9 @@
-import { CreateParams, DataProvider, fetchUtils } from "react-admin";
+import {
+  CreateParams,
+  DataProvider,
+  fetchUtils,
+  GetListParams,
+} from "react-admin";
 import simpleRestProvider from "ra-data-simple-rest";
 import { get, set, remove } from "local-storage";
 
@@ -55,6 +60,21 @@ const dataProvider = simpleRestProvider(apiUrl, httpClient, "Content-Range");
 
 const customProvider: DataProvider = {
   ...dataProvider,
+  getList: (resource: string, params: GetListParams) => {
+    const query = new URLSearchParams({
+      filter: JSON.stringify({ ...params.filter, site: "luta-pro" }),
+      range: JSON.stringify([
+        (params.pagination.page - 1) * params.pagination.perPage + 1,
+        params.pagination.page * params.pagination.perPage,
+      ]),
+      sort: JSON.stringify([params.sort.field, params.sort.order]),
+    });
+    return httpClient(`${apiUrl}/${resource}?${String(query)}`, {
+      method: "GET",
+    }).then((data) => {
+      return data.json;
+    });
+  },
   create: (resource: string, params: CreateParams<any>) => {
     if (params.data.hasOwnProperty("file")) {
       if (!params.data.file) return Promise.reject("Вы не загрузили картинку");
@@ -69,7 +89,7 @@ const customProvider: DataProvider = {
       params.data = dataForm;
     }
 
-    return httpClient(`${apiUrl}/${resource}`, {
+    return httpClient(`${apiUrl}/${resource}/luta-pro`, {
       method: "POST",
       body: params.data,
     }).then(({ json }) => ({ data: json }));

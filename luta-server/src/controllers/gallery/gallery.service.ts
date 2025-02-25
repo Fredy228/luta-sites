@@ -42,18 +42,14 @@ export class GalleryService {
     return newPhoto;
   }
 
-  async getAll(
-    { range, filter, sort }: QueryGetAllType,
-    site: SiteEnum,
-  ): Promise<{
+  async getAll({ range, filter, sort }: QueryGetAllType): Promise<{
     data: Gallery[];
     total: number;
   }> {
     const filterOption: { [key: string]: any } = {
       ...filter,
-      site,
     };
-    if (filter.title) filterOption.title = Like('%' + filter.title + '%');
+    if (filter?.title) filterOption.title = Like('%' + filter.title + '%');
 
     const rangeOption: { [key: string]: any } = {};
     if (range && range.length === 2) {

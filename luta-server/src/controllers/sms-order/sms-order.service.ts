@@ -74,13 +74,14 @@ export class SmsOrderService {
       );
     }
 
-    await this.mailService.noticeOrder(newSmsOrder, 'LutaPro');
+    this.mailService
+      .noticeOrder(newSmsOrder, 'LutaPro')
+      .catch((e) => console.error(e));
   }
 
-  async getAll({ range, filter, sort }: QueryGetAllType, site: SiteEnum) {
+  async getAll({ range, filter, sort }: QueryGetAllType) {
     const filterOption: { [key: string]: any } = {
       ...filter,
-      site,
     };
     if (filter.name) filterOption.name = Like('%' + filter.name + '%');
     if (filter.phone) filterOption.phone = Like('%' + filter.phone + '%');

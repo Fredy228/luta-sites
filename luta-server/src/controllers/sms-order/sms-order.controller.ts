@@ -23,12 +23,13 @@ import { Response } from 'express';
 import { parseQueryGetAll } from '../../services/parseQuery';
 import { SiteEnum } from '../../enum/site.enum';
 import { smsOrderCreateSchema } from '../../joi-schema/smsOrderSchema';
+import { CustomException } from '../../services/custom-exception';
 
 @Controller('api/sms-order-luta')
 export class SmsOrderController {
   constructor(private readonly smsOrderService: SmsOrderService) {}
 
-  @Post('/')
+  @Post('/:site')
   @HttpCode(HttpStatus.CREATED)
   @UsePipes(
     new BodyValidationPipe(smsOrderCreateSchema),
@@ -36,16 +37,20 @@ export class SmsOrderController {
   )
   @UseInterceptors(FileFieldsInterceptor([{ name: 'file', maxCount: 1 }]))
   async create(
+    @Param('site') site: SiteEnum,
     @Body() body: SmsOrderDto,
     @UploadedFiles()
     files: {
       file?: Array<Express.Multer.File>;
     },
   ) {
+    if (!Object.values(SiteEnum).includes(site))
+      throw new CustomException(HttpStatus.BAD_REQUEST, `Не верный тип сайта`);
+
     return this.smsOrderService.create(
       body,
       files?.file?.length > 0 ? files?.file[0] : null,
-      SiteEnum.LUTA_PRO,
+      site,
     );
   }
 
@@ -58,19 +63,20 @@ export class SmsOrderController {
   ) {
     const { range, filter, sort } = parseQueryGetAll(query);
 
-    const smsOrders = await this.smsOrderService.getAll(
-      { range, filter, sort },
-      SiteEnum.LUTA_PRO,
-    );
+    const smsOrders = await this.smsOrderService.getAll({
+      range,
+      filter,
+      sort,
+    });
 
     res
-      .setHeader(
-        'Content-Range',
-        range && range.length === 2
-          ? `sms-order ${range[0]}-${range[1]}/${smsOrders.total}`
-          : smsOrders.total,
-      )
-      .json(smsOrders.data);
+      // .setHeader(
+      //   'Content-Range',
+      //   range && range.length === 2
+      //     ? `sms-order ${range[0]}-${range[1]}/${smsOrders.total}`
+      //     : smsOrders.total,
+      // )
+      .json(smsOrders);
   }
 
   @Get('/:id')

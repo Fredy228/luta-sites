@@ -7,6 +7,13 @@ export class Gallery {
   @PrimaryGeneratedColumn()
   id: number;
 
+  @Column({
+    type: 'enum',
+    enum: SiteEnum,
+    nullable: false,
+  })
+  site: SiteEnum;
+
   @Column({ type: 'varchar', length: 500, nullable: false })
   path: string;
 
@@ -16,13 +23,6 @@ export class Gallery {
     nullable: false,
   })
   type: GalleryTypeEnum;
-
-  @Column({
-    type: 'enum',
-    enum: SiteEnum,
-    nullable: false,
-  })
-  site: SiteEnum;
 
   @Column({ type: 'varchar', length: 250, nullable: false })
   title: string;

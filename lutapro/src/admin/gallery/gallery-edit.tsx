@@ -32,6 +32,8 @@ const GalleryEdit = (props: any) => (
           { id: GalleryTypeEnum.REZBA, name: "Резьба" },
           { id: GalleryTypeEnum.PLAZMA, name: "Плазменная резка" },
           { id: GalleryTypeEnum.THREED_PANEL, name: "3D панели" },
+          { id: GalleryTypeEnum.LASER_CUTTING, name: "Лазерная резка" },
+          { id: GalleryTypeEnum.MIRROR_FRAMES, name: "Зеркала и рамы" },
         ]}
       />
     </SimpleForm>

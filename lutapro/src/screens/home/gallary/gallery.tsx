@@ -3,10 +3,7 @@
 import { type FC, useState } from "react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
-import ImageList from "@mui/material/ImageList";
-import ImageListItem from "@mui/material/ImageListItem";
 import { Element } from "react-scroll";
-import { styled } from "@mui/system";
 
 import styles from "./gallery.module.scss";
 
@@ -21,9 +18,7 @@ const ModalWindow = dynamic(
     ssr: false,
   },
 );
-import { galleryList } from "@/screens/home/gallary/gallery-list";
 import SliderGallery from "@/components/ui/slider-gallery/slider-gallery";
-import useWindowDimensions from "@/hooks/useWindowDimensions";
 import { GalleryItem } from "@/types/gallery";
 
 type Props = {
@@ -41,8 +36,6 @@ const Gallery: FC<Props> = ({
   const [isShowModal, setIsShowModal] = useState<boolean>(false);
   const [idxCurrPhoto, setIdxCurrPhoto] = useState<number>(1);
 
-  const { width } = useWindowDimensions();
-
   const handleOpenPhoto = async (id: number) => {
     const idx = list.findIndex((i) => i.id === id);
     await setIdxCurrPhoto(idx);
@@ -57,18 +50,19 @@ const Gallery: FC<Props> = ({
             <TitleSectionBig colorText={colorTitle} text={title} />
             {text && <SubtitleSectionBig colorText={colorTitle} text={text} />}
             <ul className={styles.gallery_list}>
-              {list.map((item) => (
-                <li className={styles.gallery_item} key={item.id}>
-                  <Image
-                    className={styles.gallery_img}
-                    src={`${process.env.SERVER_URL}/${item.path}`}
-                    alt={item.title}
-                    width={500}
-                    height={500}
-                    onClick={() => handleOpenPhoto(item.id)}
-                  />
-                </li>
-              ))}
+              {list &&
+                list.map((item) => (
+                  <li className={styles.gallery_item} key={item.id}>
+                    <Image
+                      className={styles.gallery_img}
+                      src={`${process.env.SERVER_URL}/${item.path}`}
+                      alt={item.title}
+                      width={500}
+                      height={500}
+                      onClick={() => handleOpenPhoto(item.id)}
+                    />
+                  </li>
+                ))}
             </ul>
 
             {isShowModal && (

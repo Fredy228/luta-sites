@@ -50,7 +50,7 @@ export const ListNavPortfolio: NavPortfolioType[] = [
     img: imgPortf_4.src,
     cols: 1,
     rows: 1,
-    url: "/",
+    url: "/mirror-frames",
   },
   {
     id: 5,
@@ -68,6 +68,6 @@ export const ListNavPortfolio: NavPortfolioType[] = [
     img: imgPortf_6.src,
     cols: 1,
     rows: 1,
-    url: "/",
+    url: "/laser-cutting",
   },
 ];

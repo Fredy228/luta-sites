@@ -7,9 +7,9 @@ axios.defaults.baseURL = baseURL;
 
 export const getAllGallery = async (
   type: GalleryTypeEnum,
-): Promise<GalleryItem[]> => {
+): Promise<{ data: GalleryItem[]; total: number }> => {
   const params = new URLSearchParams({
-    filter: JSON.stringify({ type }),
+    filter: JSON.stringify({ type, site: "luta-pro" }),
   });
 
   console.log("fetch", `${baseURL}/api/gallery-luta?${String(params)}`);
@@ -39,5 +39,5 @@ export const sendSmsOrder = async (body: {
   formData.append("name", body.name);
   formData.append("email", body.email);
 
-  await axios.post("/api/sms-order-luta", formData);
+  await axios.post("/api/sms-order-luta/luta-pro", formData);
 };
