@@ -1,0 +1,28 @@
+@import "@/styles/mixins";
+@import "@/styles/variable";
+
+.sendFile {
+  &_form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 0 auto 0 auto;
+    background-color: #f6f6ef;
+    padding: 30px;
+
+    width: 100%;
+    max-width: 400px;
+  }
+
+  &_formTitle {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: $text-size-lg;
+  }
+
+  &_formText {
+    text-align: center;
+    font-size: $text-size-sm;
+  }
+}

@@ -106,7 +106,11 @@ const ContactsHeader: FC = () => {
 
       <AnimatePresence>
         {isShowForm && (
-          <ModalWindow setShow={setIsShowForm} cross={"small"}>
+          <ModalWindow
+            setShow={setIsShowForm}
+            scrollPage={true}
+            cross={"small"}
+          >
             <SendForm
               title={"ОБРАТНЫЙ ЗВОНОК"}
               text={"Мы свяжемся с вами в ближайшее время"}

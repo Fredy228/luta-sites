@@ -1,0 +1,86 @@
+@import "@/styles/variable";
+@import "@/styles/mixins";
+
+.faq {
+  @include section;
+
+  &_inner {
+  }
+
+  &_flex {
+    display: flex;
+    gap: 50px;
+    margin-top: 50px;
+
+    @media screen and (max-width: 767px) {
+      flex-direction: column-reverse;
+      gap: 30px;
+    }
+  }
+
+  &_wrapAction {
+    width: 40%;
+    text-align: center;
+
+    @media screen and (max-width: 767px) {
+      width: 100%;
+    }
+  }
+
+  &_wrapInfo {
+    flex: 1;
+  }
+
+  &_actionImg {
+    max-width: 290px;
+    margin: 0 auto 30px auto;
+
+    @media screen and (max-width: 767px) {
+      display: none;
+    }
+  }
+
+  &_actionSpan {
+    font-size: $text-size-xs;
+    text-transform: uppercase;
+    color: $color-dark-v2;
+    margin-bottom: 20px;
+    display: inline-block;
+
+    @media screen and (max-width: 767px) {
+      display: none;
+    }
+  }
+
+  &_actionName {
+    font-size: 25px;
+    font-weight: 700;
+    margin-bottom: 15px;
+  }
+
+  &_actionPosition {
+    font-size: $text-size-sm;
+    font-style: italic;
+    margin-bottom: 30px;
+  }
+
+  &_infoTitle {
+    font-weight: 500;
+    font-size: $text-size-lg;
+    color: #0e6caa;
+
+    display: inline-flex;
+    align-items: center;
+
+    > svg {
+      height: 20px;
+      width: 20px;
+      margin-right: 10px;
+    }
+  }
+
+  &_infoText {
+    font-size: $text-size-sm;
+    font-style: italic;
+  }
+}

@@ -21,6 +21,10 @@ export class GalleryModule {
         method: RequestMethod.POST,
       },
       {
+        path: 'api/gallery-luta/many/:site',
+        method: RequestMethod.POST,
+      },
+      {
         path: 'api/gallery-luta/:id',
         method: RequestMethod.GET,
       },

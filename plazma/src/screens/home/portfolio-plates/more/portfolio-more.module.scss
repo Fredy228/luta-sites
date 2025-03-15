@@ -1,0 +1,98 @@
+@import "@/styles/variable";
+@import "@/styles/mixins";
+
+.moreModal {
+  background-color: $color-light;
+  width: 1140px;
+  max-width: calc(100vw - 30px);
+  box-sizing: border-box;
+
+  &_head {
+    padding: 30px;
+    display: flex;
+    gap: 25px;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f6f6ef;
+
+    @media (width <= 768px) {
+      flex-direction: column;
+      padding: 15px;
+    }
+
+    &_image {
+      width: 80px;
+      height: 80px;
+      border-radius: 4px;
+      object-fit: cover;
+
+      @media (width <= 768px) {
+        display: none;
+      }
+    }
+
+    &_title {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 15px;
+
+      @media (width <= 768px) {
+        font-size: $text-size-lg;
+      }
+    }
+
+    &_subtitle {
+      color: $color-text-second;
+      font-size: $text-size-sm;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+    }
+
+    &_text {
+      font-size: $text-size-sm;
+      color: $color-text-main;
+    }
+  }
+
+  &_body {
+    padding: 30px;
+
+    @media (width <= 768px) {
+      padding: 15px;
+    }
+
+    &_title {
+      font-size: 28px;
+      font-weight: 700;
+      margin: 20px 0 15px 0;
+    }
+
+    &_text {
+      font-size: $text-size-md;
+      line-height: 1.4;
+      margin-bottom: 10px;
+    }
+  }
+
+  &_portfolio {
+    display: grid;
+    gap: 15px;
+    grid-template-columns: repeat(6, 1fr);
+
+    @media (width <= 768px) {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 5px;
+    }
+
+    &_item {
+      height: auto;
+    }
+
+    &_image {
+      display: block;
+      aspect-ratio: 1;
+      object-fit: cover;
+      cursor: pointer;
+    }
+  }
+}

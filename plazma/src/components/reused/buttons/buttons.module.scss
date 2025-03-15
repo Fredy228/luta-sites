@@ -1,0 +1,35 @@
+@import "@/styles/variable";
+
+.btn {
+  &_round {
+    font-size: $text-size-lg;
+    transition-property: color, background-color;
+    transition-duration: $anim-duration;
+    transition-timing-function: $anim-func-v1;
+    text-wrap: nowrap;
+    white-space: nowrap;
+    text-align: center;
+
+    padding: 15px 30px;
+    border-radius: 50px;
+
+    &.color {
+      color: $color-light;
+      background-color: $color-primary;
+
+      &:hover {
+        background-color: $color-primary-hover;
+      }
+    }
+
+    &.grey {
+      color: #555555;
+      background-color: #f1f1f1b3;
+
+      &:hover {
+        color: $color-light;
+        background-color: $color-primary;
+      }
+    }
+  }
+}

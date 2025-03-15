@@ -93,7 +93,7 @@ export class SmsOrderService {
     const rangeOption: { [key: string]: any } = {};
     if (range && range.length === 2) {
       rangeOption.take = range[1] - range[0] + 1;
-      rangeOption.skip = range[0];
+      rangeOption.skip = range[0] - 1;
     }
 
     const sortOption: { [key: string]: any } = {};

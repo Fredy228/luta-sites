@@ -58,6 +58,33 @@ export class GalleryController {
     );
   }
 
+  @Post('/many/:site')
+  @HttpCode(HttpStatus.CREATED)
+  @UsePipes(
+    new ImageValidatorPipe({ maxSize: 500, nullable: false }),
+    new BodyValidationPipe(galleryCreateSchema),
+  )
+  @UseInterceptors(FileFieldsInterceptor([{ name: 'file', maxCount: 50 }]))
+  async createMany(
+    @Param('site') site: SiteEnum,
+    @Body() body: GalleryDto,
+    @UploadedFiles()
+    files: {
+      file?: Array<Express.Multer.File>;
+    },
+  ) {
+    if (!Object.values(SiteEnum).includes(site))
+      throw new CustomException(HttpStatus.BAD_REQUEST, `Не верный тип сайта`);
+    if (!(files?.file && files.file?.length > 0))
+      throw new CustomException(HttpStatus.BAD_REQUEST, `Файлы не переданы`);
+
+    return Promise.all(
+      files.file.map((file: Express.Multer.File) =>
+        this.galleryService.createOne(body, file, site),
+      ),
+    );
+  }
+
   @Get('/')
   @HttpCode(HttpStatus.OK)
   async getAll(

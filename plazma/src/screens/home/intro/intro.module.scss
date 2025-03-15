@@ -1,0 +1,50 @@
+@import "@/styles/variable";
+
+.intro {
+  flex: 1;
+  margin-top: 30px;
+
+  @media screen and (max-width: 767px) {
+    margin-top: 0;
+  }
+
+  > div {
+    height: 100%;
+  }
+
+  &_inner {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  &_title,
+  &_typingText {
+    color: $color-light;
+    font-size: 40px;
+    font-weight: 700;
+
+    @media screen and (max-width: 1023px) {
+      font-size: 30px;
+    }
+
+    @media screen and (max-width: 767px) {
+      font-size: 22px;
+    }
+  }
+
+  &_text {
+    color: #03b5f1;
+    font-size: $text-size-lg;
+    margin-bottom: 50px;
+    margin-top: 15px;
+
+    @media screen and (max-width: 767px) {
+      font-size: $text-size-md;
+      margin-top: 25px;
+    }
+  }
+}

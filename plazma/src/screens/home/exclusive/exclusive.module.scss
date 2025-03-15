@@ -1,0 +1,29 @@
+@import "@/styles/variable";
+@import "@/styles/mixins";
+
+.exclusive {
+  @include section;
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  user-select: none;
+  background-color: rgb(85, 85, 85);
+
+  &_list {
+    margin-top: 70px;
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+
+    @media (width <= 768px) {
+      flex-direction: column;
+    }
+  }
+
+  &_item {
+    @media (width <= 768px) {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+  }
+}

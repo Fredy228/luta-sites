@@ -1,0 +1,101 @@
+@import "@/styles/variable";
+
+.contacts {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+
+  &_wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    color: $color-light;
+
+    @media screen and (max-width: 767px) {
+      display: none;
+    }
+  }
+
+  &_btn {
+    font-size: 23px;
+    font-weight: 700;
+
+    @media screen and (max-width: 1023px) {
+      font-size: $text-size-lg;
+    }
+  }
+
+  &_email {
+    font-size: $text-size-sm;
+    text-decoration: underline;
+  }
+
+  &_btnPhone {
+    background-color: $color-primary;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    > svg {
+      color: $color-light;
+      width: 24px;
+      height: 24px;
+    }
+  }
+}
+
+.contactsList {
+  background-color: $color-light;
+  border-radius: 3px;
+
+  &_item {
+    padding: 20px;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid rgba(137, 137, 137, 0.8);
+    }
+  }
+
+  &_email {
+    color: $color-second;
+    font-size: $text-size-lg;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &_link {
+    font-size: 22px;
+    color: $color-dark;
+    font-weight: 700;
+
+    @media screen and (max-width: 767px) {
+      font-size: $text-size-lg;
+    }
+  }
+
+  &_text {
+    color: $color-dark-v2;
+    margin-top: 2px;
+    font-size: $text-size-sm;
+  }
+
+  &_social {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    > svg {
+      width: 30px;
+      height: 30px;
+    }
+  }
+}

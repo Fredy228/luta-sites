@@ -1,0 +1,244 @@
+@import "@/styles/variable";
+
+.scrollToTop,
+.mobilePhone {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $color-primary;
+  z-index: 40;
+
+  > svg {
+    width: 25px;
+    height: 25px;
+    color: $color-light;
+  }
+}
+
+.scrollToTop {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+}
+
+.mobilePhone {
+  position: fixed;
+  bottom: 15px;
+  left: 15px;
+  display: none;
+
+  @media screen and (max-width: 767px) {
+    display: flex;
+  }
+}
+
+.header {
+  margin-bottom: 20px;
+
+  &_inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 90px;
+  }
+
+  &_info {
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: $bg-v1;
+    font-size: $text-size-sm;
+    color: $color-light;
+
+    @media screen and (max-width: 767px) {
+      display: none;
+    }
+  }
+
+  &_logo {
+    display: flex;
+    align-items: center;
+  }
+
+  &_logoImg {
+    width: 210px;
+
+    @media screen and (max-width: 1023px) {
+      width: 150px;
+    }
+  }
+}
+
+.headerDynm {
+  width: 100%;
+  min-width: 320px;
+
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+
+  &.scroll {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 45;
+    background-color: rgba(77, 77, 74, 0.9);
+
+    @media screen and (max-width: 767px) {
+      display: block;
+    }
+  }
+
+  &_inner {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+
+    .headerDynm.scroll & {
+      justify-content: flex-end;
+      padding: 10px;
+
+      @media screen and (max-width: 767px) {
+        justify-content: space-between;
+      }
+    }
+  }
+
+  &_logo {
+    display: block;
+  }
+
+  &_logoImg {
+    width: 130px;
+  }
+
+  &_burger {
+    width: 55px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.8;
+    transition: opacity $anim-duration $anim-func-v1;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &.mobile {
+      background-color: $color-primary;
+      border-radius: 50%;
+      opacity: 1;
+      display: none;
+
+      @media screen and (max-width: 767px) {
+        display: flex;
+      }
+    }
+
+    @media screen and (max-width: 767px) {
+      width: 44px;
+      height: 44px;
+    }
+  }
+
+  &_burgerSpan {
+    display: block;
+    position: relative;
+    height: 2px;
+    width: 20px;
+    border-radius: 2px;
+    background-color: $color-light;
+
+    &:after,
+    &:before {
+      display: block;
+      content: "";
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: $color-light;
+      height: 2px;
+      width: 20px;
+      border-radius: 2px;
+    }
+
+    &:after {
+      top: 7px;
+    }
+
+    &:before {
+      bottom: 7px;
+    }
+  }
+
+  &_nav {
+    width: 100%;
+
+    .headerDynm.scroll & {
+      width: auto;
+      margin-right: auto;
+
+      @media screen and (max-width: 767px) {
+        display: none;
+      }
+    }
+  }
+
+  &_navList {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+
+    .headerDynm.scroll & {
+      width: auto;
+    }
+
+    @media screen and (max-width: 1023px) {
+      gap: 15px;
+    }
+  }
+
+  &_navItem {
+    .headerDynm.scroll &:not(:nth-child(-n + 2)) {
+      display: none;
+    }
+
+    @media screen and (max-width: 1023px) {
+      text-align: center;
+
+      .headerDynm.scroll & {
+        display: none;
+      }
+    }
+  }
+
+  &_navLink {
+    font-size: $text-size-sm;
+    color: $color-light;
+    text-transform: uppercase;
+    display: inline-flex;
+    height: 55px;
+    padding: 0 15px;
+    align-items: center;
+    transition: opacity $anim-duration $anim-func-v1;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    @media screen and (max-width: 1023px) {
+      text-align: center;
+      padding: 0 5px;
+      font-size: $text-size-xs;
+    }
+  }
+}
